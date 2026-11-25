@@ -178,9 +178,9 @@ html {
 }
 
 .pill-logo-img {
-  height: 38px;
+  height: 44px;
   width: auto;
-  max-width: 185px;
+  max-width: 215px;
   object-fit: contain;
   display: block;
 }
@@ -318,9 +318,6 @@ html {
 @media (max-width: 1140px) {
   .pill-nav-links {
     display: none;
-  }
-  .pill-mobile-toggle {
-    display: flex;
   }
 }
 
@@ -1238,9 +1235,6 @@ html {
   .pill-nav-links {
     display: none;
   }
-  .pill-mobile-toggle {
-    display: flex;
-  }
   .hero-main-container {
     flex-direction: column;
     padding: 50px 28px 0;
@@ -1315,8 +1309,8 @@ html {
     min-height: 52px;
   }
   .pill-logo-img {
-    height: 30px;
-    max-width: 130px;
+    height: 36px;
+    max-width: 165px;
   }
   /* Hide extra circular icon buttons on mobile header to prevent cramming */
   .pill-icon-circle-btn {
@@ -1328,11 +1322,6 @@ html {
   .universal-btn-primary {
     padding: 8px 14px;
     font-size: 13px;
-  }
-  .pill-mobile-toggle {
-    display: flex;
-    width: 36px;
-    height: 36px;
   }
   .hero-main-container {
     padding: 50px 16px 0;
@@ -1404,16 +1393,12 @@ html {
     min-height: 48px;
   }
   .pill-logo-img {
-    height: 26px;
-    max-width: 110px;
+    height: 32px;
+    max-width: 145px;
   }
   .universal-btn-primary {
     padding: 6px 12px;
     font-size: 12px;
-  }
-  .pill-mobile-toggle {
-    width: 34px;
-    height: 34px;
   }
   .hero-main-container {
     padding: 50px 14px 0;

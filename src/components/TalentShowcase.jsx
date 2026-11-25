@@ -121,7 +121,8 @@ export default function TalentShowcase({ onSelectRole }) {
     if (!container || !stage || !track) return;
 
     const overflowX = Math.max(0, track.scrollWidth - stage.clientWidth);
-    setSectionHeight(window.innerHeight + overflowX);
+    const stageHeight = stage.offsetHeight || window.innerHeight;
+    setSectionHeight(stageHeight + overflowX);
 
     const rect = container.getBoundingClientRect();
     const traveled = Math.max(0, Math.min(overflowX, -rect.top));

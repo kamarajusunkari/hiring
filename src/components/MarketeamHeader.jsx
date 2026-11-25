@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  ChevronDown, ChevronRight, Menu, X, ArrowRight, ShieldCheck, Mail, Phone 
+  ChevronDown, ChevronRight, Mail, Phone 
 } from 'lucide-react';
 import { BRAND } from '../data/brandConfig';
 import { SERVICES_MENU, INDUSTRIES_MENU, HIRING_SOLUTIONS_MENU } from '../data/navigationData';
@@ -17,7 +17,6 @@ import { SERVICES_MENU, INDUSTRIES_MENU, HIRING_SOLUTIONS_MENU } from '../data/n
 export default function MarketeamHeader({ onHireNowClick, onTalkToTeamClick, onSelectRole }) {
   // 'services' | 'industries' | 'hiring' | null
   const [activeMenu, setActiveMenu] = useState(null);
-  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const headerRef = useRef(null);
 
   // Close dropdown on click outside
@@ -37,7 +36,6 @@ export default function MarketeamHeader({ onHireNowClick, onTalkToTeamClick, onS
 
   const handleRoleSelect = (slug) => {
     setActiveMenu(null);
-    setMobileDrawerOpen(false);
     if (onSelectRole) onSelectRole(slug);
   };
 
@@ -189,16 +187,6 @@ export default function MarketeamHeader({ onHireNowClick, onTalkToTeamClick, onS
             title="Talk to an Advisor"
           >
             <Phone size={15} />
-          </button>
-
-          {/* Mobile Menu Hamburger */}
-          <button 
-            type="button" 
-            className="pill-mobile-toggle"
-            onClick={() => setMobileDrawerOpen(true)}
-            aria-label="Open mobile navigation"
-          >
-            <Menu size={20} />
           </button>
         </div>
 
@@ -371,114 +359,6 @@ export default function MarketeamHeader({ onHireNowClick, onTalkToTeamClick, onS
                   </div>
                 );
               })}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ====================================================================
-          MOBILE DRAWER NAVIGATION
-          ==================================================================== */}
-      {mobileDrawerOpen && (
-        <div className="mobile-drawer-overlay" role="dialog" aria-modal="true">
-          <div className="mobile-drawer-backdrop" onClick={() => setMobileDrawerOpen(false)} />
-          <div className="mobile-drawer-panel">
-            <div className="drawer-top">
-              <img 
-                src="/assets/images/arora-logo.webp" 
-                alt="Arora Tech Solutions" 
-                style={{ height: 32, width: 'auto' }} 
-              />
-              <button 
-                type="button" 
-                onClick={() => setMobileDrawerOpen(false)} 
-                aria-label="Close menu"
-                style={{ color: '#94A3B8', background: 'none', border: 'none', cursor: 'pointer' }}
-              >
-                <X size={22} />
-              </button>
-            </div>
-
-            <div className="drawer-scroll-body">
-              <div className="drawer-group-title">Main Navigation</div>
-              <div className="drawer-nav-list">
-                <a href={`${BRAND.mainSiteUrl}/`} className="drawer-nav-item" target="_blank" rel="noopener noreferrer">
-                  <span style={{ fontWeight: 700 }}>Home</span>
-                </a>
-                <a href={`${BRAND.mainSiteUrl}/about-us/`} className="drawer-nav-item" target="_blank" rel="noopener noreferrer">
-                  <span style={{ fontWeight: 700 }}>About us</span>
-                </a>
-                <a href={`${BRAND.mainSiteUrl}/case-studies/`} className="drawer-nav-item" target="_blank" rel="noopener noreferrer">
-                  <span style={{ fontWeight: 700 }}>Our Work</span>
-                </a>
-                <a href={`${BRAND.mainSiteUrl}/career/`} className="drawer-nav-item" target="_blank" rel="noopener noreferrer">
-                  <span style={{ fontWeight: 700 }}>Career</span>
-                </a>
-                <a href={`${BRAND.mainSiteUrl}/insights/`} className="drawer-nav-item" target="_blank" rel="noopener noreferrer">
-                  <span style={{ fontWeight: 700 }}>Blog & Insights</span>
-                </a>
-              </div>
-
-              <div className="drawer-group-title">Hiring Solutions & Staffing</div>
-              <div className="drawer-nav-list">
-                {[...HIRING_SOLUTIONS_MENU.col1, ...HIRING_SOLUTIONS_MENU.col2].map((item, idx) => (
-                  <button 
-                    key={idx}
-                    type="button" 
-                    className="drawer-nav-item"
-                    style={{ textAlign: 'left', width: '100%', color: '#00A6FF', background: 'none', border: 'none', cursor: 'pointer' }}
-                    onClick={() => handleRoleSelect(item.slug)}
-                  >
-                    <span style={{ fontWeight: 700 }}>{item.name}</span>
-                  </button>
-                ))}
-              </div>
-
-              <div className="drawer-group-title">Services</div>
-              <div className="drawer-nav-list">
-                {[...SERVICES_MENU.col1, ...SERVICES_MENU.col2].map((item, idx) => (
-                  <a 
-                    key={idx} 
-                    href={item.link || '#'} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="drawer-nav-item"
-                    style={{ color: '#E2E8F0' }}
-                  >
-                    <span style={{ fontWeight: 700 }}>{item.name}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div className="drawer-footer-action">
-              <div className="btn-border-wrap" style={{ width: '100%' }}>
-                <button
-                  type="button"
-                  className="universal-btn-primary"
-                  style={{ width: '100%' }}
-                  onClick={() => {
-                    setMobileDrawerOpen(false);
-                    handleHireClick();
-                  }}
-                >
-                  <span className="btn-text-content">
-                    <span>Speak to an expert</span>
-                  </span>
-                </button>
-              </div>
-
-              {/* Mobile Quick Contact Row */}
-              <div className="drawer-contact-row">
-                <a href={`mailto:${BRAND.contact.email}`} className="drawer-contact-chip">
-                  <Mail size={14} />
-                  <span>{BRAND.contact.email}</span>
-                </a>
-                <a href={`tel:${BRAND.contact.phoneRaw}`} className="drawer-contact-chip">
-                  <Phone size={14} />
-                  <span>{BRAND.contact.phone}</span>
-                </a>
-              </div>
             </div>
           </div>
         </div>
