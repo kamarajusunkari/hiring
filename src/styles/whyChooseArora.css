@@ -1,0 +1,230 @@
+@import url('https://db.onlinewebfonts.com/c/e55e9079ee863276569c8a68d776ef04?family=Futura+Md+BT+Medium');
+
+/* ==========================================================================
+   WHY CHOOSE ARORA SECTION
+   Black background (#000), neutral-950 (#0a0a0a) cards, #1e3a8a blur blobs,
+   center video card with seamless bottom fade, Futura Md BT Medium typography.
+   ========================================================================== */
+
+.why-arora-section {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: 'Futura Md BT Medium', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 48px 16px;
+  overflow: hidden;
+  z-index: 18;
+}
+
+.why-arora-section *,
+.why-arora-section *::before,
+.why-arora-section *::after {
+  box-sizing: border-box;
+}
+
+.why-arora-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Section Heading */
+.why-arora-heading {
+  color: #0f172a;
+  font-family: 'Futura Md BT Medium', system-ui, -apple-system, sans-serif;
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: -0.04em;
+  margin: 0 0 48px;
+}
+
+/* Three-Column Card Grid */
+.why-arora-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* Shared Card Surface (Blue Shade Tints) */
+.why-arora-card {
+  position: relative;
+  height: 380px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, #f3f8ff 0%, #e1eeff 100%);
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  overflow: hidden;
+}
+
+.why-arora-card-pad {
+  padding: 24px;
+}
+
+/* Blue Glow Blobs */
+.why-arora-blob-left {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -420px;
+  width: 460px;
+  height: 460px;
+  border-radius: 9999px;
+  background-color: #2563eb;
+  filter: blur(64px);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.why-arora-blob-right {
+  position: absolute;
+  top: -112px;
+  right: -112px;
+  width: 224px;
+  height: 224px;
+  border-radius: 9999px;
+  background-color: #2563eb;
+  filter: blur(64px);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+/* Content Wrapper inside Text Cards */
+.why-arora-card-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.why-arora-card-title {
+  color: #0b1b3b;
+  font-family: 'Futura Md BT Medium', system-ui, -apple-system, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 300;
+  margin: 0;
+}
+
+.why-arora-card-body-mid {
+  margin: 36px 0 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: rgba(15, 23, 42, 0.78);
+  font-weight: 300;
+  max-width: 360px;
+}
+
+.why-arora-card-body-bottom {
+  margin: auto 0 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: rgba(15, 23, 42, 0.78);
+  font-weight: 300;
+  max-width: 380px;
+}
+
+/* Card 2: Vibrant Royal Cobalt-Blue Video Card */
+.why-arora-video-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #1842a8 0%, #1e4fc0 72%, #2563eb 100%);
+  border: 1px solid rgba(30, 79, 192, 0.35);
+}
+
+.why-arora-video-wrap {
+  position: relative;
+  width: 100%;
+  height: 72%;
+  overflow: hidden;
+}
+
+.why-arora-video-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 79, 192, 0.22);
+  pointer-events: none;
+}
+
+.why-arora-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.why-arora-video-fade {
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 128px; /* h-32 */
+  background: linear-gradient(to bottom, rgba(30, 79, 192, 0), #1e4fc0);
+  z-index: 2;
+}
+
+.why-arora-video-footer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px;
+}
+
+.why-arora-video-title {
+  color: #ffffff;
+  text-align: left;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (sm: 640px, md: 768px)
+   ========================================================================== */
+@media (min-width: 640px) {
+  .why-arora-section {
+    padding: 80px 24px;
+  }
+  .why-arora-heading {
+    font-size: 2.25rem; /* sm:text-4xl */
+    line-height: 2.5rem;
+    margin-bottom: 96px;
+  }
+  .why-arora-grid {
+    gap: 16px;
+  }
+  .why-arora-card {
+    height: 460px;
+  }
+  .why-arora-card-pad,
+  .why-arora-video-footer {
+    padding: 32px;
+  }
+  .why-arora-card-title {
+    font-size: 1.9rem;
+  }
+  .why-arora-card-body-mid {
+    margin-top: 56px;
+    font-size: 17px;
+  }
+  .why-arora-card-body-bottom {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 768px) {
+  .why-arora-section {
+    padding: 80px 40px;
+  }
+  .why-arora-heading {
+    font-size: 3rem; /* md:text-5xl */
+    line-height: 1;
+  }
+  .why-arora-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

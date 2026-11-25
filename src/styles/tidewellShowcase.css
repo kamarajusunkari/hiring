@@ -1,0 +1,417 @@
+/* ==========================================================================
+   TALENT SHOWCASE — SCROLL-DRIVEN CARD ROW (WHITE BG, NO ARROWS/CONTROLS, NO ANIMATION)
+   ========================================================================== */
+
+:root {
+  --tw-bg: #FFFFFF;
+  --tw-ink: #1F2430;
+  --tw-muted: #938B90;
+  --tw-dark: #12141B;
+  --tw-subline: #5B5A62;
+  --tw-cta-hover: #2E3546;
+}
+
+/* Section Container (Sticky scroll travel for horizontal card row) */
+.tidewell-scroll-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  color: var(--tw-ink);
+  z-index: 10;
+}
+
+/* 100% Height Viewport Stage */
+.tidewell-pinned-stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0 36px;
+  gap: 20px;
+  user-select: none;
+  z-index: 15;
+}
+
+/* ==========================================================================
+   HEADER BLOCK
+   ========================================================================== */
+.tidewell-process-block {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  padding: 0 24px;
+  text-align: center;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tidewell-kicker-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background: rgba(31, 36, 48, 0.05);
+  border: 1px solid rgba(31, 36, 48, 0.12);
+  color: #1F2430;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.tidewell-kicker-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00A6FF;
+  box-shadow: 0 0 8px rgba(0, 166, 255, 0.6);
+}
+
+.tidewell-process-headline {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(28px, 2.75vw, 40px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--tw-ink);
+  margin: 0;
+}
+
+.tidewell-word-muted {
+  color: var(--tw-muted);
+  font-weight: 400;
+}
+
+.tidewell-process-chip {
+  display: inline-block;
+  width: 1.12em;
+  height: 0.90em;
+  border-radius: 0.18em;
+  vertical-align: -0.12em;
+  margin: 0 0.16em;
+  overflow: hidden;
+  box-shadow: 0 0.08em 0.22em rgba(31, 36, 48, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: #040919;
+  position: relative;
+}
+
+.tidewell-process-chip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tidewell-process-subline {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14.5px;
+  font-weight: 400;
+  color: var(--tw-subline);
+  margin-top: 6px;
+  line-height: 1.45;
+  max-width: 580px;
+}
+
+.tidewell-process-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 20px;
+  border-radius: 9999px;
+  background: var(--tw-ink);
+  color: #FFFFFF;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 4px 16px rgba(31, 36, 48, 0.18);
+}
+
+.tidewell-process-cta-btn:hover {
+  background: var(--tw-cta-hover);
+}
+
+.tidewell-cta-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   SCROLL-DRIVEN HORIZONTAL CARD TRACK (LARGER CARDS, NO MIDDLE BLUR)
+   ========================================================================== */
+.tidewell-carousel-viewport {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.tidewell-carousel-track {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 28px;
+  padding: 8px clamp(20px, 6vw, 80px);
+  width: max-content;
+}
+
+.tidewell-card {
+  position: relative;
+  flex: 0 0 auto;
+  height: clamp(340px, 58vh, 480px);
+  aspect-ratio: 3 / 4;
+  max-width: 84vw;
+  border-radius: 22px;
+  background: #040919;
+  border: 1.5px solid rgba(15, 23, 42, 0.1);
+  box-shadow: none;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tidewell-card:hover {
+  border-color: #00A6FF;
+}
+
+.tidewell-card-bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  background: #060B1A;
+}
+
+.tidewell-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Edge-only contrast scrim + top frosted blur behind heading & description */
+.tidewell-card-blur-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 23, 0.84) 0%,
+    rgba(2, 6, 23, 0.62) 22%,
+    rgba(2, 6, 23, 0) 42%,
+    rgba(2, 6, 23, 0) 68%,
+    rgba(2, 6, 23, 0.86) 100%
+  );
+  pointer-events: none;
+}
+
+.tidewell-card-blur-mask::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 58%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 58%, transparent 100%);
+  pointer-events: none;
+}
+
+.tidewell-card-sheen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 24%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.tidewell-card-interior {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 22px 22px;
+  box-sizing: border-box;
+}
+
+.tidewell-card-heading-wrap {
+  width: 100%;
+}
+
+.tidewell-card-title {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+}
+
+.tidewell-card-line {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.3px;
+  color: #FFFFFF;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85), 0 0 16px rgba(0, 166, 255, 0.3);
+  display: block;
+}
+
+.tidewell-card-line-1 {
+  color: #FFFFFF;
+}
+
+.tidewell-card-line-2 {
+  color: #E0F2FE;
+}
+
+.tidewell-card-desc {
+  margin: 8px 0 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  line-height: 1.42;
+  color: rgba(224, 242, 254, 0.88);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  letter-spacing: -0.1px;
+}
+
+.tidewell-card-btn-wrap {
+  width: 100%;
+}
+
+.tidewell-card-action-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px 10px 18px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 9999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #FFFFFF;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.tidewell-card-btn-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+}
+
+.tidewell-card-arrow-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #00A6FF;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(0, 166, 255, 0.65);
+  flex-shrink: 0;
+}
+
+.tidewell-card:hover .tidewell-card-action-btn {
+  background: #00A6FF;
+  border-color: #38BDF8;
+}
+
+.tidewell-card:hover .tidewell-card-arrow-circle {
+  background: #FFFFFF;
+  color: #0052CC;
+}
+
+/* ==========================================================================
+   MOBILE & RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 820px) {
+  .tidewell-pinned-stage {
+    padding: 20px 0 24px;
+    gap: 14px;
+  }
+  .tidewell-process-block {
+    padding: 0 16px;
+  }
+  .tidewell-process-headline {
+    font-size: 26px;
+  }
+  .tidewell-process-subline {
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  .tidewell-process-cta-btn {
+    height: 36px;
+    padding: 0 16px;
+    font-size: 12.5px;
+    margin-top: 10px;
+  }
+  .tidewell-carousel-track {
+    gap: 18px;
+  }
+  .tidewell-card {
+    height: clamp(320px, 54vh, 420px);
+  }
+  .tidewell-card-interior {
+    padding: 18px 16px 16px;
+  }
+  .tidewell-card-line {
+    font-size: 19px;
+  }
+  .tidewell-card-action-btn {
+    padding: 8px 10px 8px 14px;
+  }
+  .tidewell-card-btn-text {
+    font-size: 12.5px;
+  }
+  .tidewell-card-arrow-circle {
+    width: 24px;
+    height: 24px;
+  }
+}

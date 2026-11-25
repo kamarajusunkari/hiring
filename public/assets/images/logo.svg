@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 50" width="280" height="50" fill="none">
+  <!-- Brand Mark -->
+  <rect x="2" y="5" width="40" height="40" rx="10" fill="#0F52BA"/>
+  <path d="M12 34L22 14L32 34H26.8L22 24.5L17.2 34H12Z" fill="#FFFFFF"/>
+  <circle cx="22" cy="18.5" r="2.8" fill="#00C896"/>
+  
+  <!-- Logotype Typography -->
+  <text x="54" y="27" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#0F172A" letter-spacing="-0.5">Arora<tspan fill="#0F52BA">Tech</tspan></text>
+  <text x="54" y="41" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#64748B" letter-spacing="1.2">DEVELOPER HIRING SOLUTIONS</text>
+</svg>

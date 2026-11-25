@@ -1,0 +1,14 @@
+# ========================================================
+# Arora Tech Solutions - robots.txt
+# Target: hire.aroratechsolutions.com
+# ========================================================
+
+User-agent: *
+Allow: /
+Disallow: /forms/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /database/
+Disallow: /docs/
+
+Sitemap: https://hire.aroratechsolutions.com/sitemap.xml

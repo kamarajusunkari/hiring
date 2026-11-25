@@ -1,0 +1,906 @@
+/* ==========================================================================
+   DISTILL "BUILT FOR PEOPLE. READ BY MACHINES." COMPARISON SECTION
+   ========================================================================== */
+
+:root {
+  --distill-bg: #EEF0F2;
+  --distill-ink: #0F1115;
+  --distill-body: #2A2E35;
+  --distill-muted: #8B9098;
+  --distill-code: #7A7F88;
+  --distill-comment: #B3B8BF;
+  --distill-hot: #FF5A1F;
+  --distill-hot-soft: #FFE1D3;
+  --distill-cw: 46vw;
+  --distill-ch: 52vh;
+  --distill-gap: 4.75vw;
+  --distill-top: 40.2vh;
+  --distill-sans: "Inter", system-ui, sans-serif;
+  --distill-serif: "Newsreader", Georgia, serif;
+  --distill-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --distill-cw: 84vw;
+    --distill-ch: 54vw;
+    --distill-gap: 7vw;
+    --distill-top: 54svh;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 700px) {
+  :root {
+    --distill-top: 58svh;
+  }
+}
+
+.distill-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  background-color: var(--distill-bg);
+  color: var(--distill-body);
+  font-family: var(--distill-sans);
+  overflow: hidden;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   TOP NAV (56px tall, 20px side padding, flex)
+   ========================================================================== */
+.distill-nav {
+  height: 56px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 20;
+}
+
+.distill-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--distill-ink);
+}
+
+.distill-logo-icon {
+  width: 19px;
+  height: 23px;
+  fill: currentColor;
+  position: relative;
+}
+
+.distill-logo-text {
+  font-family: var(--distill-sans);
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--distill-ink);
+}
+
+.distill-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+}
+
+.distill-nav-link {
+  font-family: var(--distill-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--distill-body);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.distill-nav-link:hover {
+  color: var(--distill-ink);
+}
+
+.distill-chevron {
+  opacity: 0.7;
+}
+
+.distill-nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.distill-signin-link {
+  color: var(--distill-body);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.distill-signin-link:hover {
+  color: var(--distill-ink);
+}
+
+.distill-btn-trial {
+  height: 32px;
+  padding: 0 17px;
+  border-radius: 9999px;
+  border: 1px solid #C4C9CF;
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--distill-body);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.distill-btn-trial:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: #A0A5AC;
+}
+
+.distill-btn-demo {
+  height: 32px;
+  padding: 0 17px;
+  border-radius: 9999px;
+  border: none;
+  background: var(--distill-hot);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.distill-btn-demo:hover {
+  background: #E54910;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   HERO COPY (Grid 1fr | 34vw, gap 4vw, padding 30px 8.9vw 0)
+   ========================================================================== */
+.distill-hero-copy {
+  display: grid;
+  grid-template-columns: 1fr 34vw;
+  gap: 4vw;
+  padding: 30px 8.9vw 0;
+  position: relative;
+  z-index: 10;
+}
+
+.distill-hero-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.distill-eyebrow {
+  font-family: var(--distill-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--distill-body);
+  margin-bottom: 14px;
+}
+
+.distill-headline {
+  font-family: var(--distill-serif);
+  font-size: clamp(30px, 3vw, 58px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--distill-ink);
+  margin: 0;
+}
+
+.distill-headline em {
+  font-style: italic;
+  display: block;
+}
+
+.distill-hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.distill-paragraph {
+  font-family: var(--distill-sans);
+  font-size: clamp(14px, 1.05vw, 19px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--distill-body);
+  max-width: 34vw;
+  margin: 0 0 20px 0;
+}
+
+.distill-explore-btn {
+  height: 40px;
+  padding: 0 22px;
+  border-radius: 9999px;
+  border: none;
+  background: var(--distill-hot);
+  color: #FFFFFF;
+  font-family: var(--distill-sans);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.distill-explore-btn:hover {
+  transform: translateY(-2px);
+  background: #E54910;
+  box-shadow: 0 6px 16px rgba(255, 90, 31, 0.35);
+}
+
+/* ==========================================================================
+   THE BELT CONTAINER
+   - Top at var(--distill-top) - 70px
+   - Height var(--distill-ch) + 140px
+   ========================================================================== */
+.distill-belt {
+  position: absolute;
+  top: calc(var(--distill-top) - 70px);
+  left: 0;
+  width: 100%;
+  height: calc(var(--distill-ch) + 140px);
+  cursor: grab;
+  touch-action: pan-y;
+  overflow: visible;
+  z-index: 15;
+}
+
+.distill-belt.is-dragging {
+  cursor: grabbing;
+}
+
+/* 1. Code Layer (.distill-codes) */
+.distill-codes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24vw);
+  mask-image: linear-gradient(90deg, transparent 0, #000 24vw);
+}
+
+/* 2. Cards Layer (.distill-cards) */
+.distill-cards {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* 3. Canvas Layer */
+.distill-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Base Card Shell and Code Box */
+.k-card,
+.k-code {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: var(--distill-cw);
+  height: var(--distill-ch);
+  border-radius: 1.6vw;
+  overflow: hidden;
+  will-change: transform, clip-path;
+  container-type: inline-size;
+}
+
+/* ==========================================================================
+   THE SCANNER LINE (.distill-scan)
+   ========================================================================== */
+.distill-scan {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--distill-top) - 14px);
+  height: calc(var(--distill-ch) + 40px);
+  width: 0;
+  z-index: 25;
+  pointer-events: none;
+}
+
+/* Core 4px vertical glowing line */
+.distill-scan-core {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -2px;
+  width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #ff7a3c 0%, #FF5A1F 12%, #FF5A1F 88%, #ff7a3c 100%);
+  box-shadow: 0 0 10px 2px rgba(255, 90, 31, 0.85), 0 0 34px 10px rgba(255, 90, 31, 0.38);
+}
+
+/* Halo 42px wide spilling to the card side (right) */
+.distill-scan-halo {
+  position: absolute;
+  top: 4%;
+  bottom: 4%;
+  left: 0;
+  width: 42px;
+  background: linear-gradient(90deg, rgba(255, 110, 50, 0.55) 0%, transparent 100%);
+  filter: blur(6px);
+}
+
+/* ==========================================================================
+   THE COUNTER BADGE (.distill-badge)
+   ========================================================================== */
+.distill-badge {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(var(--distill-top) - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.distill-badge-label {
+  font-family: var(--distill-sans);
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--distill-muted);
+  letter-spacing: 0.02em;
+}
+
+.distill-badge-pill {
+  height: 26px;
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(255, 90, 31, 0.35);
+  font-family: var(--distill-mono);
+  font-size: 12.5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.distill-badge-num {
+  background: var(--distill-hot);
+  color: #FFFFFF;
+  padding: 0 11px 0 13px;
+  min-width: 8.2ch;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  line-height: 26px;
+}
+
+.distill-badge-pct {
+  background: var(--distill-hot-soft);
+  color: #D9430F;
+  font-size: 11px;
+  padding: 0 12px 0 10px;
+  line-height: 26px;
+}
+
+/* ==========================================================================
+   KESSLER CARDS INTERNAL STYLES (Sized in cqw)
+   ========================================================================== */
+.k-card {
+  color: #FFFFFF;
+  font-family: var(--distill-sans);
+}
+
+/* Shared Card Nav Header */
+.k-nav {
+  position: absolute;
+  top: 4cqw;
+  left: 4.4cqw;
+  right: 4.4cqw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 5;
+}
+
+.k-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 1.3cqw;
+  font-family: var(--distill-sans);
+  font-size: 4.6cqw;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: inherit;
+}
+
+.k-mountain-mark {
+  width: 5.4cqw;
+  height: 4.2cqw;
+  stroke: currentColor;
+  stroke-width: 3.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.k-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 3.4cqw;
+}
+
+.k-nav-item {
+  font-family: var(--distill-sans);
+  font-size: 1.32cqw;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  color: inherit;
+  text-decoration: none;
+}
+
+.k-nav-item.is-active-pill {
+  opacity: 1;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 9999px;
+  padding: 0.7cqw 1.6cqw;
+  margin: -0.7cqw -1.6cqw;
+}
+
+/* Card 1: Home */
+.k-card-home {
+  background-size: cover;
+  background-position: center;
+}
+
+.k-home-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 10, 4, 0.25) 0%, transparent 30%, rgba(20, 10, 4, 0.55) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 4.4cqw;
+}
+
+.k-home-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.k-home-stats {
+  display: flex;
+  align-items: flex-end;
+  gap: 4cqw;
+}
+
+.k-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.k-stat-num {
+  font-family: var(--distill-sans);
+  font-size: 9cqw;
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.k-stat-label {
+  font-size: 1.9cqw;
+  opacity: 0.85;
+  margin-top: 0.5cqw;
+}
+
+.k-stats-split-rule {
+  width: 1px;
+  height: 8cqw;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.k-home-tagline {
+  font-size: 2.2cqw;
+  line-height: 1.35;
+  width: 24cqw;
+  text-align: right;
+  opacity: 0.9;
+}
+
+/* Card 2: Price */
+.k-card-price {
+  background: radial-gradient(120% 90% at 20% 110%, #FF6A1F 0, #FF9A4A 35%, #F7C79A 62%, #EFD9C4 100%);
+  color: #2A1406;
+  padding: 4.4cqw;
+  display: flex;
+  flex-direction: column;
+}
+
+.k-price-main {
+  position: absolute;
+  top: 36%;
+  left: 4.4cqw;
+}
+
+.k-price-val {
+  font-family: var(--distill-sans);
+  font-size: 13cqw;
+  font-weight: 300;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.k-price-val sup {
+  font-size: 0.4em;
+  vertical-align: 0.4em;
+}
+
+.k-price-sub {
+  font-family: var(--distill-mono);
+  font-size: 1.6cqw;
+  opacity: 0.75;
+  margin-top: 1.5cqw;
+  letter-spacing: 0.05em;
+}
+
+.k-price-plans {
+  position: absolute;
+  top: 36%;
+  right: 4.4cqw;
+  width: 36cqw;
+  display: flex;
+  flex-direction: column;
+}
+
+.k-plan-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2cqw 0;
+  border-top: 1px solid rgba(42, 20, 6, 0.25);
+  font-size: 1.8cqw;
+  font-weight: 500;
+}
+
+.k-price-btn {
+  position: absolute;
+  bottom: 4.4cqw;
+  left: 4.4cqw;
+  padding: 1.2cqw 2.6cqw;
+  border-radius: 9999px;
+  background: #2A1406;
+  color: #F7E6D6;
+  font-family: var(--distill-sans);
+  font-size: 1.8cqw;
+  font-weight: 500;
+  border: none;
+}
+
+/* Card 3: Case Study */
+.k-card-case {
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.1);
+  position: relative;
+}
+
+.k-case-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(25, 14, 8, 0.15) 0%, rgba(25, 14, 8, 0.65) 100%);
+  padding: 4.4cqw;
+  display: flex;
+  flex-direction: column;
+}
+
+.k-case-kicker {
+  position: absolute;
+  top: 17%;
+  left: 4.4cqw;
+  font-family: var(--distill-mono);
+  font-size: 1.4cqw;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+.k-case-title {
+  position: absolute;
+  top: 24%;
+  left: 4.4cqw;
+  width: 56cqw;
+  font-family: var(--distill-serif);
+  font-size: 4.6cqw;
+  line-height: 1.15;
+  font-weight: 400;
+}
+
+.k-case-stats {
+  position: absolute;
+  bottom: 4.4cqw;
+  left: 4.4cqw;
+  right: 4.4cqw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3cqw;
+}
+
+.k-case-stat-col {
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  padding-top: 1.2cqw;
+}
+
+.k-case-stat-val {
+  font-family: var(--distill-sans);
+  font-size: 6cqw;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.k-case-stat-desc {
+  font-size: 1.6cqw;
+  opacity: 0.8;
+  margin-top: 0.6cqw;
+}
+
+/* Card 4: Vision */
+.k-card-vision {
+  background: #1B1311;
+  padding: 4.4cqw;
+  display: flex;
+  flex-direction: column;
+}
+
+.k-vision-tiles {
+  position: absolute;
+  top: 21%;
+  left: 4.4cqw;
+  right: 4.4cqw;
+  height: 46%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: 2cqw;
+}
+
+.k-tile-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.4cqw;
+  background-size: cover;
+  background-position: center;
+}
+
+.k-tile-quote {
+  font-family: var(--distill-serif);
+  font-size: 3.4cqw;
+  line-height: 1.2;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+.k-tile-quote em {
+  font-style: italic;
+  opacity: 0.75;
+}
+
+.k-vision-footer {
+  position: absolute;
+  bottom: 4.4cqw;
+  left: 4.4cqw;
+  right: 4.4cqw;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.6cqw;
+  opacity: 0.7;
+}
+
+/* Card 5: Alloy */
+.k-card-alloy {
+  background-color: #140C08;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.k-alloy-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20, 12, 8, 0.4) 0%, rgba(20, 12, 8, 0.75) 100%);
+  padding: 4.4cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.k-alloy-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.k-alloy-title {
+  font-family: var(--distill-serif);
+  font-size: 7.4cqw;
+  line-height: 0.98;
+  font-weight: 400;
+}
+
+.k-alloy-title em {
+  font-style: italic;
+  display: block;
+}
+
+.k-alloy-specs {
+  width: 30cqw;
+  display: flex;
+  flex-direction: column;
+}
+
+.k-spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.9cqw 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 1.6cqw;
+}
+
+/* Card 6: Journal */
+.k-card-journal {
+  background: #E9ECF1;
+  color: #121A2A;
+  padding: 4.4cqw;
+}
+
+.k-journal-title {
+  position: absolute;
+  top: 23%;
+  left: 4.4cqw;
+  font-family: var(--distill-serif);
+  font-size: 5.6cqw;
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.k-journal-title em {
+  font-style: italic;
+  color: #46618E;
+  display: block;
+}
+
+.k-journal-posts {
+  position: absolute;
+  bottom: 4.4cqw;
+  left: 4.4cqw;
+  right: 4.4cqw;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  gap: 2cqw;
+}
+
+.k-post-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.k-post-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 1.2cqw;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 1.2cqw;
+}
+
+.k-post-kicker {
+  font-family: var(--distill-mono);
+  font-size: 1.2cqw;
+  color: #6A7891;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4cqw;
+}
+
+.k-post-heading {
+  font-family: var(--distill-sans);
+  font-size: 1.7cqw;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   CODE BLOCK TWIN STYLING (.k-code)
+   ========================================================================== */
+.k-code {
+  background: #FFFFFF;
+  border: 1px solid #E2E5E9;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  padding: 4.4cqw;
+  white-space: pre;
+  position: absolute;
+  visibility: hidden;
+}
+
+.k-code-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: var(--distill-mono);
+  font-size: 1.56cqw;
+  line-height: 1.39;
+  font-weight: 400;
+}
+
+.k-code-html {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 49%;
+  color: var(--distill-code);
+  overflow: hidden;
+}
+
+.k-code-meta {
+  position: absolute;
+  left: 51%;
+  top: 0;
+  width: 49%;
+  color: var(--distill-comment);
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS (≤ 767px)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .distill-nav {
+    padding: 0 16px;
+    gap: 0;
+    justify-content: space-between;
+  }
+  .distill-nav-links,
+  .distill-signin-link,
+  .distill-btn-trial {
+    display: none;
+  }
+  .distill-btn-demo {
+    height: 30px;
+    padding: 0 13px;
+    font-size: 12px;
+  }
+  .distill-hero-copy {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 18px 20px 0;
+  }
+  .distill-headline {
+    font-size: 34px;
+  }
+  .distill-paragraph {
+    max-width: 100%;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .distill-codes {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 30vw);
+    mask-image: linear-gradient(90deg, transparent 0, #000 30vw);
+  }
+}

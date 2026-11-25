@@ -1,0 +1,2264 @@
+/* ==========================================================================
+   MARKETEAM HERO & TALENT LANDING PAGE STYLES - ARORA TECH BLUE THEME
+   Fonts: Inter (400, 500, 600, 700), Urbanist (500, 600, 700)
+   Accents: #00A6FF (Logo Cyan/Sky Blue), #0066FF (Royal Blue), #04091A (Cosmic Navy)
+   ========================================================================== */
+
+/* Conic gradient angle property for rotating borders */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rotateBorder {
+  0% {
+    --border-angle: 0deg;
+  }
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+/* ==========================================================================
+   SMOOTH SCROLLING & SLEEK SINGLE SCROLLBAR (Guaranteed Single Scrollbar)
+   ========================================================================== */
+html {
+  overflow-x: clip;
+  overflow-y: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #030714;
+  color: #ffffff;
+  /* NO overflow on body */
+}
+
+/* Custom Sleek Single Scrollbar on root html only */
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #030714;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(0, 166, 255, 0.45);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 166, 255, 0.85);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 166, 255, 0.45) #030714;
+}
+
+/* ==========================================================================
+   ROOT APP CONTAINER & BACKGROUND (Deep Dark Navy Blue Theme)
+   ========================================================================== */
+.app,
+.marketeam-app-root {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: #040C20;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow-x: clip;
+}
+
+/* Color-shifted background layer: converts violet tones into Arora electric blue & royal blue */
+.marketeam-app-root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_111401_56af5012-2263-45d3-849a-8688084d7c2a.png&w=1280&q=85') center center / cover no-repeat;
+  filter: hue-rotate(-75deg) saturate(1.3) brightness(0.92);
+  opacity: 0.88;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Atmospheric Arora Dark Navy Blue cosmic glow overlay */
+.marketeam-app-root::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle 650px at 72% 46%, rgba(0, 166, 255, 0.28) 0%, rgba(9, 29, 78, 0.5) 45%, transparent 75%),
+    radial-gradient(circle 500px at 20% 30%, rgba(0, 166, 255, 0.1) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(4, 12, 32, 0.72) 0%, rgba(4, 11, 28, 0.84) 45%, rgba(3, 8, 22, 0.96) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==========================================================================
+   DIGITAL GRAVITY STYLE FLOATING GLASSMORPHIC PILL NAVBAR
+   - Matching User Reference Image 2
+   - Fully rounded pill (border-radius: 9999px)
+   - Deep frosted dark glass (backdrop-filter: blur(28px))
+   - Floating with top: 18px
+   ========================================================================== */
+.digital-gravity-header-wrapper {
+  position: sticky;
+  top: 18px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  z-index: 1000;
+  animation: headerFadeDown 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes headerFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.digital-gravity-pill {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 166, 255, 0.25);
+  border-radius: 9999px;
+  padding: 12px 20px 12px 28px;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 16px 42px rgba(0, 40, 120, 0.12), 0 2px 10px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.digital-gravity-pill:hover {
+  background: #FFFFFF;
+  border-color: #00A6FF;
+  box-shadow: 0 20px 50px rgba(0, 80, 200, 0.18), 0 0 24px rgba(0, 166, 255, 0.25);
+}
+
+/* Left: Official Original Logo (Transparent Clean Display) */
+.pill-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 2px 4px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill-logo-link:hover {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.pill-logo-img {
+  height: 38px;
+  width: auto;
+  max-width: 185px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Center: Navigation Links in Arora Brand Blue */
+.pill-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.pill-nav-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #0052CC;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.pill-nav-item:hover {
+  color: #00A6FF;
+  transform: translateY(-1px);
+}
+
+.pill-nav-item.active {
+  color: #0052CC;
+  font-weight: 700;
+  position: relative;
+}
+
+/* Blue active indicator underline */
+.pill-nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 6px;
+  right: 6px;
+  height: 2.5px;
+  background: #0052CC;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 166, 255, 0.7);
+}
+
+.pill-nav-item .chevron-arrow {
+  color: #0052CC;
+  opacity: 0.8;
+  transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+}
+
+.pill-nav-item:hover .chevron-arrow,
+.pill-nav-item.active .chevron-arrow {
+  opacity: 1;
+  color: #00A6FF;
+}
+
+.pill-nav-item.highlight-hiring {
+  color: #0052CC;
+  font-weight: 700;
+}
+
+.pill-nav-item.highlight-hiring:hover {
+  color: #00A6FF;
+}
+
+/* Right: Action Controls */
+.pill-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Circular Glass Contact Buttons (Mail & Phone) */
+.pill-icon-circle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid #BAE6FD;
+  background: #F0F7FF;
+  color: #0052CC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.pill-icon-circle-btn:hover {
+  background: #00A6FF;
+  border-color: #00A6FF;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0, 166, 255, 0.45);
+  transform: scale(1.08);
+}
+
+.pill-icon-circle-btn:hover {
+  background: rgba(0, 166, 255, 0.25);
+  border-color: rgba(0, 166, 255, 0.75);
+  box-shadow: 0 0 16px rgba(0, 166, 255, 0.55);
+  transform: scale(1.08);
+}
+
+/* Mobile Toggle inside pill */
+.pill-mobile-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+@media (max-width: 1140px) {
+  .pill-nav-links {
+    display: none;
+  }
+  .pill-mobile-toggle {
+    display: flex;
+  }
+}
+
+/* ==========================================================================
+   DIGITAL GRAVITY MEGA-DROPDOWNS (Matching User Reference Image 1 & 7)
+   - 2 Left Columns with Glowing Neon Blue Dots, Clean Titles, Bottom Dividers & Chevrons
+   - 1 Right Section with Two-Line Display Title + 4x4 Boxed Client Logo Grid (16 Cells)
+   - Deep frosted dark glassmorphism with Arora Blue Tints
+   ========================================================================== */
+.digital-gravity-header-wrapper .dg-mega-dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(36px);
+  -webkit-backdrop-filter: blur(36px);
+  border: 1.5px solid #BAE6FD;
+  border-radius: 28px;
+  padding: 44px 50px 42px 50px;
+  box-shadow: 0 35px 85px rgba(0, 40, 120, 0.16), 0 10px 30px rgba(0, 0, 0, 0.05);
+  display: grid;
+  grid-template-columns: 1.22fr 0.88fr;
+  gap: 52px;
+  align-items: start;
+  z-index: 1000;
+  animation: dgDropdownFadeSlide 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dgDropdownFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Left: 2 Columns of Navigation Rows */
+.dg-dropdown-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+}
+
+.dg-dropdown-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual Item Row with Divider Line */
+.dg-dropdown-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13.5px 6px 13.5px 4px;
+  border-bottom: 1px solid #E2E8F0;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dg-dropdown-item-row:hover {
+  background: linear-gradient(90deg, #EFF6FF 0%, transparent 95%);
+  border-bottom-color: #00A6FF;
+  padding-left: 10px;
+}
+
+.dg-item-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+/* Glowing Neon Electric Blue Dot (Matching Arora Logo) */
+.dg-glowing-dot {
+  width: 7.5px;
+  height: 7.5px;
+  border-radius: 50%;
+  background-color: #00A6FF;
+  box-shadow: 0 0 10px #00A6FF, 0 0 16px rgba(0, 166, 255, 0.85);
+  flex-shrink: 0;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+}
+
+.dg-dropdown-item-row:hover .dg-glowing-dot {
+  background-color: #0052CC;
+  transform: scale(1.35);
+  box-shadow: 0 0 14px #0052CC, 0 0 22px rgba(0, 82, 204, 0.8);
+}
+
+/* Item Name Typography */
+.dg-item-name {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #0F172A;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.dg-dropdown-item-row:hover .dg-item-name {
+  color: #0052CC;
+}
+
+/* Chevron Right Arrow */
+.dg-item-chevron {
+  color: #0052CC;
+  flex-shrink: 0;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.22s ease;
+}
+
+.dg-dropdown-item-row:hover .dg-item-chevron {
+  color: #00A6FF;
+  transform: translateX(4px);
+}
+
+/* Right Section: Heading + 4x4 Boxed Client Grid */
+.dg-dropdown-feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 8px;
+}
+
+.dg-feature-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0 0 26px 0;
+  white-space: pre-line;
+}
+
+/* 4x4 Boxed Logo Grid (Matching Reference Screenshot) */
+.dg-boxed-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #E2E8F0;
+  border-left: 1px solid #E2E8F0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #F8FAFC;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.dg-logo-cell {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 12px;
+  border-right: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  transition: background 0.22s ease, border-color 0.22s ease;
+  cursor: default;
+  position: relative;
+}
+
+.dg-logo-cell:hover {
+  background: #EFF6FF;
+}
+
+.dg-cell-brand-text {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.dg-logo-cell:hover .dg-cell-brand-text {
+  color: #0052CC;
+  text-shadow: 0 0 10px rgba(0, 166, 255, 0.35);
+  transform: scale(1.06);
+}
+
+/* Individual Brand Typography Treatments (Matching GCC Giants from Reference Image 1) */
+.brand-beyond { letter-spacing: 0.22em; font-weight: 500; font-family: 'Cinzel', serif, sans-serif; font-size: 11.5px; }
+.brand-gbm { letter-spacing: 0.14em; font-weight: 800; font-size: 14.5px; }
+.brand-skillbridge { letter-spacing: 0.02em; font-weight: 600; text-transform: capitalize; font-size: 12.5px; }
+.brand-mediapr { letter-spacing: 0.03em; font-weight: 700; text-transform: none; }
+.brand-difc { letter-spacing: 0.18em; font-weight: 800; }
+.brand-sanad { font-style: italic; letter-spacing: 0.1em; font-weight: 700; }
+.brand-exa { font-style: italic; font-weight: 800; text-transform: lowercase; font-size: 15px; letter-spacing: -0.02em; }
+.brand-adib { letter-spacing: 0.1em; font-weight: 700; }
+.brand-flydubai { text-transform: lowercase; font-weight: 700; letter-spacing: -0.02em; font-size: 13.5px; }
+.brand-terranexus { letter-spacing: 0.04em; font-weight: 600; text-transform: capitalize; font-size: 12px; }
+.brand-emdad { letter-spacing: 0.16em; font-weight: 800; font-size: 13.5px; }
+.brand-atmosphere { letter-spacing: 0.26em; font-weight: 400; font-size: 11px; font-family: serif; }
+.brand-sephorasquad { letter-spacing: 0.16em; font-weight: 600; font-size: 10.5px; font-family: 'Playfair Display', serif; }
+.brand-khazna { letter-spacing: 0.08em; font-weight: 700; text-transform: capitalize; font-size: 13.5px; }
+.brand-ohana { letter-spacing: 0.28em; font-weight: 500; font-size: 11.5px; }
+.brand-adia { letter-spacing: 0.18em; font-weight: 800; font-size: 13px; }
+
+/* Responsive Breakpoints for Mega-Dropdown */
+@media (max-width: 1280px) {
+  .digital-gravity-header-wrapper .dg-mega-dropdown {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 36px;
+    padding: 36px 36px;
+  }
+  .dg-dropdown-columns {
+    gap: 0 32px;
+  }
+  .dg-feature-title {
+    font-size: 24px;
+  }
+  .dg-logo-cell {
+    height: 56px;
+  }
+  .dg-cell-brand-text {
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .digital-gravity-header-wrapper .dg-mega-dropdown {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 30px 24px;
+  }
+  .dg-dropdown-columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .digital-gravity-header-wrapper .dg-mega-dropdown {
+    display: none; /* Managed via mobile drawer */
+  }
+}
+
+/* ==========================================================================
+   UNIVERSAL BUTTON STYLE WITH ROTATING CONIC-GRADIENT BORDER (.btn-border-wrap)
+   Used for: Header CTA ("Speak to an expert"), Hero CTA ("Start Project"), Modal CTAs
+   Shifted to Arora Logo Blue Palette (#00A6FF, #0066FF, #04091A)
+   ========================================================================== */
+.btn-border-wrap {
+  position: relative;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.btn-border-wrap:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(0, 166, 255, 0.45);
+}
+
+.btn-border-wrap:active {
+  transform: translateY(0);
+}
+
+.btn-border-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  padding: 3px;
+  border-radius: 53px;
+  background: conic-gradient(from var(--border-angle), #00A6FF, #030816, #0066FF, #030816, #00A6FF);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotateBorder 3s linear infinite;
+  pointer-events: none;
+}
+
+/* Fallback rotation for older browsers that do not support @property */
+@supports not (background: paint(something)) {
+  .btn-border-wrap::before {
+    background: linear-gradient(135deg, #00A6FF, #030816, #0066FF);
+  }
+}
+
+/* Universal Button Core */
+.universal-btn-primary,
+.btn-join-now,
+.btn-start-project {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #040919;
+  border: none;
+  border-radius: 50px;
+  padding: 9px 22px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+/* Universal Sliding Hover Fill Animation (Arora Logo Blue Gradient) */
+.universal-btn-primary::after,
+.btn-join-now::after,
+.btn-start-project::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #0052CC 0%, #00A6FF 100%);
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 1;
+}
+
+.universal-btn-primary:hover::after,
+.btn-join-now:hover::after,
+.btn-start-project:hover::after {
+  transform: translateX(0);
+}
+
+.universal-btn-primary .btn-text-content,
+.btn-join-now .btn-text-content,
+.btn-start-project .btn-text-content {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-join-now .btn-text-content,
+.btn-start-project .btn-text-content {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   HERO SECTION ROOT & MAIN CONTAINER
+   ========================================================================== */
+.hero-section-root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 64px;
+  gap: 40px;
+  min-height: calc(100vh - 180px);
+}
+
+/* ==========================================================================
+   HERO LEFT CONTENT
+   flex: 0 1 600px, padding-top: 40px
+   ========================================================================== */
+.hero-left-content {
+  flex: 0 1 600px;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: heroLeftFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes heroLeftFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typewriter Heading: Urbanist, 64px, weight 600, line-height 64px, letter-spacing -1.5px */
+.hero-typewriter-heading {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 64px;
+  letter-spacing: -1.5px;
+  margin: 0;
+  padding: 0;
+  min-height: 192px; /* Holds layout steady while typing */
+  word-break: break-word;
+}
+
+.text-dark-slice {
+  color: #FFFFFF;
+  font-weight: 600;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.text-white-slice {
+  color: #38BDF8;
+  font-weight: 700;
+  text-shadow: 0 0 24px rgba(0, 166, 255, 0.7), 0 0 45px rgba(0, 102, 255, 0.35);
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 52px;
+  background-color: #00A6FF;
+  box-shadow: 0 0 10px #00A6FF, 0 0 18px rgba(0, 166, 255, 0.7);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blinkCursor 0.8s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Start Project Button */
+.hero-cta-wrapper {
+  margin-top: 48px;
+  opacity: 0;
+  animation: btnEntrance 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 3.2s; /* Appears after typing finishes */
+}
+
+@keyframes btnEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn-start-project {
+  font-size: 16px;
+  padding: 14px 28px;
+}
+
+.btn-start-project .btn-text-content {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-chevron-icon {
+  transition: transform 0.25s ease;
+}
+
+.btn-start-project:hover .btn-chevron-icon {
+  transform: translateX(3px);
+}
+
+/* Cursor element: pointer SVG + "David" pill badge */
+.hero-cursor-element {
+  position: relative;
+  margin-left: 290px;
+  margin-top: 40px;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 6px;
+  opacity: 0;
+  animation: cursorEntrance 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 3.6s;
+  pointer-events: none;
+}
+
+@keyframes cursorEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.7) translate(-10px, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.cursor-pointer-icon {
+  filter: drop-shadow(0 2px 8px rgba(0, 166, 255, 0.6));
+  margin-top: -2px;
+}
+
+.cursor-name-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #00A6FF;
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 18px rgba(0, 166, 255, 0.5);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   HERO RIGHT: CIRCLES VISUALIZATION (720x720px)
+   ========================================================================== */
+.hero-right-visualization {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.circles-vis-wrapper {
+  position: relative;
+  width: 720px;
+  height: 720px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: circlesScaleIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+@keyframes circlesScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.circles-vis-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Orbit circles with 1px gradient border via mask technique */
+.orbit-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orbit-circle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(0, 166, 255, 0) 0%, rgba(0, 166, 255, 0.9) 43%, rgba(0, 166, 255, 0) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Orbit 1: 353px diameter, spins left (counterclockwise) 30s */
+.orbit-1 {
+  width: 353px;
+  height: 353px;
+  animation: spinLeft 30s linear infinite;
+  z-index: 4;
+}
+
+/* Orbit 2: 501px diameter, spins right (clockwise) 40s */
+.orbit-2 {
+  width: 501px;
+  height: 501px;
+  animation: spinRight 40s linear infinite;
+  z-index: 3;
+}
+
+/* Orbit 3: 649px diameter, spins right (clockwise) 50s */
+.orbit-3 {
+  width: 649px;
+  height: 649px;
+  animation: spinRight 50s linear infinite;
+  z-index: 2;
+}
+
+/* Orbit 4: 797px diameter, spins left (counterclockwise) 60s */
+.orbit-4 {
+  width: 797px;
+  height: 797px;
+  animation: spinLeft 60s linear infinite;
+  z-index: 1;
+}
+
+/* Rotations for orbits */
+@keyframes spinLeft {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes spinRight {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   CENTER CIRCLE (ORBIT 1): COUNT-UP 20k+ AND SPECIALISTS
+   Counter-rotates to stay upright!
+   ========================================================================== */
+.orbit-1-center-counter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Since Orbit 1 rotates left 30s, counter-rotate right 30s to stay upright */
+  animation: spinRight 30s linear infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: auto;
+  user-select: none;
+}
+
+.orbit-center-count {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 35px rgba(0, 166, 255, 0.6);
+}
+
+.orbit-center-label {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #ffffff;
+  opacity: 0.85;
+  margin-top: 6px;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   AVATARS POSITIONING & FLY-IN ANIMATION
+   ========================================================================== */
+.orbit-avatar-anchor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  pointer-events: auto;
+}
+
+/* Counter-rotations to cancel orbit rotation and keep faces upright */
+.counter-spin-right-30s {
+  animation: spinRight 30s linear infinite;
+}
+
+.counter-spin-left-40s {
+  animation: spinLeft 40s linear infinite;
+}
+
+.counter-spin-left-50s {
+  animation: spinLeft 50s linear infinite;
+}
+
+.counter-spin-right-60s {
+  animation: spinRight 60s linear infinite;
+}
+
+/* Staggered fly-in entrance: scale 0.3 + rotate -180deg + blur -> normal */
+.orbit-avatar-fly-in {
+  opacity: 0;
+  animation: avatarFlyIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes avatarFlyIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-180deg);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+}
+
+.orbit-avatar-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0d0b1a;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.orbit-avatar-card:hover {
+  transform: scale(1.15);
+}
+
+.orbit-avatar-img {
+  object-fit: cover;
+  display: block;
+  user-select: none;
+}
+
+/* ==========================================================================
+   BOTTOM LOGO TICKER STRIP
+   ========================================================================== */
+.logo-ticker-section {
+  width: 100%;
+  padding: 32px 0 40px;
+  position: relative;
+  z-index: 20;
+  opacity: 0;
+  animation: logoTickerFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes logoTickerFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Linear-gradient fade mask on left and right edges */
+.logo-ticker-track-mask {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.logo-ticker-marquee {
+  display: flex;
+  width: max-content;
+}
+
+.logo-ticker-group {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  padding-right: 64px;
+  animation: tickerScroll 20s linear infinite;
+}
+
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.logo-ticker-marquee:hover .logo-ticker-group {
+  animation-play-state: paused;
+}
+
+.logo-ticker-item {
+  width: 137px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-ticker-img {
+  width: 137px;
+  height: 40px;
+  object-fit: contain;
+  opacity: 0.75;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  filter: brightness(0) invert(1);
+}
+
+.logo-ticker-img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.logo-fallback-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   SWITCHER PILL BAR (To easily toggle Arora Header vs Marketeam Spec Header)
+   ========================================================================== */
+.view-mode-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: rgba(4, 9, 24, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 166, 255, 0.25);
+  font-size: 13px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.view-mode-btn {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  color: #94A3B8;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.view-mode-btn.active {
+  background: #00A6FF;
+  color: #ffffff;
+  border-color: #00A6FF;
+  box-shadow: 0 0 12px rgba(0, 166, 255, 0.55);
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   1280px, 1024px, 768px, 480px, 375px
+   ========================================================================== */
+
+/* 1280px: Circles scale 0.85 */
+@media (max-width: 1280px) {
+  .hero-main-container {
+    padding: 0 40px;
+  }
+  .hero-typewriter-heading {
+    font-size: 54px;
+    line-height: 56px;
+  }
+  .circles-vis-wrapper {
+    transform: scale(0.85);
+  }
+}
+
+/* 1024px: Stack layout, heading 46px, circles scale 0.72, nav gap shrinks */
+@media (max-width: 1024px) {
+  .digital-gravity-header-wrapper {
+    padding: 0 14px;
+    top: 12px;
+  }
+  .digital-gravity-pill {
+    padding: 8px 14px 8px 20px;
+    min-height: 60px;
+  }
+  .pill-nav-links {
+    display: none;
+  }
+  .pill-mobile-toggle {
+    display: flex;
+  }
+  .hero-main-container {
+    flex-direction: column;
+    padding: 0 28px;
+    min-height: auto;
+    text-align: center;
+    gap: 20px;
+  }
+  .hero-left-content {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 720px;
+    align-items: center;
+    padding-top: 28px;
+    margin: 0 auto;
+  }
+  .hero-typewriter-heading {
+    font-size: 46px;
+    line-height: 50px;
+    min-height: 120px;
+    letter-spacing: -1.2px;
+  }
+  .text-dark-slice {
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  }
+  .text-white-slice {
+    color: #38BDF8 !important;
+    text-shadow: 0 0 20px rgba(0, 166, 255, 0.7);
+  }
+  .hero-cta-wrapper {
+    margin-top: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-cursor-element {
+    margin: 20px auto 0 auto;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+  }
+  .hero-right-visualization {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .circles-vis-wrapper {
+    transform: scale(0.72);
+    margin: -50px auto;
+  }
+}
+
+/* 768px: Hide nav, heading 33px, circles scale 0.56 */
+@media (max-width: 768px) {
+  .digital-gravity-header-wrapper {
+    padding: 0 10px;
+    top: 10px;
+  }
+  .digital-gravity-pill {
+    padding: 7px 12px 7px 16px;
+    min-height: 52px;
+  }
+  .pill-logo-img {
+    height: 30px;
+    max-width: 130px;
+  }
+  /* Hide extra circular icon buttons on mobile header to prevent cramming */
+  .pill-icon-circle-btn {
+    display: none !important;
+  }
+  .pill-actions-group {
+    gap: 8px;
+  }
+  .universal-btn-primary {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  .pill-mobile-toggle {
+    display: flex;
+    width: 36px;
+    height: 36px;
+  }
+  .hero-main-container {
+    padding: 0 16px;
+    gap: 16px;
+  }
+  .hero-left-content {
+    padding-top: 18px;
+  }
+  .hero-typewriter-heading {
+    font-size: 33px;
+    line-height: 39px;
+    min-height: 95px;
+    letter-spacing: -0.8px;
+  }
+  .typewriter-cursor {
+    height: 28px;
+    width: 2.5px;
+  }
+  .hero-cta-wrapper {
+    margin-top: 24px;
+  }
+  .btn-start-project {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+  .hero-cursor-element {
+    margin-top: 16px;
+  }
+  .circles-vis-wrapper {
+    transform: scale(0.56);
+    margin: -105px auto;
+  }
+  .logo-ticker-section {
+    padding: 24px 0 32px;
+  }
+  .logo-ticker-group {
+    gap: 36px;
+    padding-right: 36px;
+  }
+  .logo-ticker-item {
+    width: 96px;
+    height: 32px;
+  }
+  .logo-ticker-img {
+    width: 96px;
+    height: 32px;
+  }
+}
+
+/* 480px: Heading 25px, circles scale 0.44, smaller buttons/logos */
+@media (max-width: 480px) {
+  .digital-gravity-pill {
+    padding: 6px 10px 6px 14px;
+    min-height: 48px;
+  }
+  .pill-logo-img {
+    height: 26px;
+    max-width: 110px;
+  }
+  .universal-btn-primary {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  .pill-mobile-toggle {
+    width: 34px;
+    height: 34px;
+  }
+  .hero-main-container {
+    padding: 0 12px;
+  }
+  .hero-left-content {
+    padding-top: 14px;
+  }
+  .hero-typewriter-heading {
+    font-size: 25px;
+    line-height: 31px;
+    min-height: 75px;
+    letter-spacing: -0.4px;
+  }
+  .typewriter-cursor {
+    height: 22px;
+    width: 2px;
+  }
+  .btn-start-project {
+    padding: 11px 20px;
+    font-size: 14px;
+  }
+  .cursor-name-badge {
+    font-size: 13px;
+    padding: 5px 12px;
+  }
+  .circles-vis-wrapper {
+    transform: scale(0.44);
+    margin: -145px auto;
+  }
+  .logo-ticker-section {
+    padding: 18px 0 24px;
+  }
+  .logo-ticker-group {
+    gap: 28px;
+    padding-right: 28px;
+  }
+  .logo-ticker-item {
+    width: 80px;
+    height: 26px;
+  }
+  .logo-ticker-img {
+    width: 80px;
+    height: 26px;
+  }
+}
+
+/* 375px: Extra compact mobile devices */
+@media (max-width: 375px) {
+  .hero-typewriter-heading {
+    font-size: 22px;
+    line-height: 28px;
+    min-height: 70px;
+  }
+  .circles-vis-wrapper {
+    transform: scale(0.38);
+    margin: -165px auto;
+  }
+}
+
+/* ==========================================================================
+   MOBILE DRAWER NAVIGATION - DARK NAVY BLUE THEME
+   ========================================================================== */
+.mobile-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.mobile-drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 18, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+.mobile-drawer-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 86%;
+  max-width: 380px;
+  background: #050E24;
+  border-left: 1px solid rgba(0, 166, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -15px 0 45px rgba(0, 0, 0, 0.85);
+  animation: slideDrawer 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDrawer {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.drawer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(0, 166, 255, 0.12);
+  background: rgba(0, 166, 255, 0.03);
+}
+
+.drawer-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 22px;
+}
+
+.drawer-group-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #38BDF8;
+  letter-spacing: 0.08em;
+  margin: 18px 0 10px;
+}
+
+.drawer-group-title:first-child {
+  margin-top: 0;
+}
+
+.drawer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.drawer-nav-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #F1F5F9;
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.drawer-nav-item:hover {
+  background: rgba(0, 166, 255, 0.1);
+  color: #00A6FF;
+  padding-left: 18px;
+}
+
+.drawer-footer-action {
+  padding: 18px 22px;
+  border-top: 1px solid rgba(0, 166, 255, 0.12);
+  background: rgba(4, 10, 26, 0.9);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.drawer-contact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.drawer-contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #94A3B8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.drawer-contact-chip:hover {
+  color: #00A6FF;
+}
+
+/* ==========================================================================
+   SMOOTH MERGE TRANSITION BETWEEN HERO (DARK NAVY) & TALENT SECTION (WHITE)
+   ========================================================================== */
+.hero-smooth-merge-container {
+  position: relative;
+  width: 100%;
+  margin-top: 50px;
+  line-height: 0;
+  z-index: 15;
+}
+
+.hero-merge-glow-arc {
+  position: absolute;
+  top: -24px;
+  left: 8%;
+  right: 8%;
+  height: 55px;
+  background: radial-gradient(ellipse at center, rgba(0, 166, 255, 0.4) 0%, rgba(0, 82, 204, 0.18) 50%, transparent 75%);
+  filter: blur(22px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-merge-curve-svg {
+  width: 100%;
+  height: 90px;
+  display: block;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -1px;
+}
+
+/* ==========================================================================
+   SECOND SECTION: TALENT SHOWCASE CAROUSEL (White Background Layout)
+   - Layout: Headline Left (Dark Navy) + Paragraph (Slate) & Navigation Controls Right
+   - Cards: Redesigned Minimalist, Spacious Architecture
+   - Active / Featured Card: Standout Dark Navy (#060F26) with 3D Elevation, Slight Tilt, Glowing Cyan Halo
+   ========================================================================== */
+/* ==========================================================================
+   TALENT SHOWCASE: HALF-CIRCLE 3D GLASSMORPHISM ARCH
+   Matching media_1794915114397 (layout, dual-font headline, floating cursors & 3D ambient items)
+   and media_1794915665021 (tight overlapping half-circle card fan deck & pill badges)
+   ========================================================================== */
+.talent-showcase-section {
+  width: 100%;
+  padding: 60px 0 110px;
+  position: relative;
+  z-index: 20;
+  background-color: #FFFFFF;
+  color: #0F172A;
+  overflow: hidden;
+}
+
+.talent-showcase-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ==========================================================================
+   1. SECTION HERO HEADER (Matching media_1794915114397)
+   - Centered headline, script accent, floating cursor tags & 3D ambient elements
+   ========================================================================== */
+.talent-hero-header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 36px;
+  position: relative;
+}
+
+.talent-kicker-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  background: #EFF6FF;
+  border: 1px solid #BAE6FD;
+  color: #0284C7;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.talent-kicker-dot {
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  background-color: #00A6FF;
+  box-shadow: 0 0 10px rgba(0, 166, 255, 0.7);
+}
+
+.talent-main-heading {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -1.8px;
+  color: #0F172A;
+  margin: 0 0 18px 0;
+}
+
+/* Signature script font accent for "Connect" matching Image 1 */
+.talent-script-accent {
+  font-family: 'Caveat', cursive;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #0284C7;
+  display: inline-block;
+  margin-right: 6px;
+  letter-spacing: -0.01em;
+  line-height: 0.9;
+}
+
+.talent-desc-paragraph {
+  font-family: 'Inter', sans-serif;
+  font-size: 17.5px;
+  line-height: 1.6;
+  color: #475569;
+  max-width: 680px;
+  margin: 0 auto 28px;
+}
+
+/* ==========================================================================
+   FLOATING COLLABORATIVE CURSORS (Matching media_1794915114397)
+   ========================================================================== */
+.floating-cursor {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+  z-index: 15;
+  animation: cursorFloat 5s ease-in-out infinite;
+}
+
+.cursor-robert {
+  top: 15%;
+  left: -40px;
+  color: #00A6FF;
+}
+
+.cursor-clarissa {
+  top: 52%;
+  right: -40px;
+  color: #F43F5E;
+  animation-delay: -2.5s;
+}
+
+.cursor-svg-icon {
+  width: 18px;
+  height: 18px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.cursor-tag-pill {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cursor-robert .cursor-tag-pill {
+  background: #00A6FF;
+}
+
+.cursor-clarissa .cursor-tag-pill {
+  background: #F43F5E;
+}
+
+@keyframes cursorFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-1.5deg);
+  }
+}
+
+/* ==========================================================================
+   FLOATING 3D AMBIENT GLASS CAPSULES (Matching media_1794915114397)
+   ========================================================================== */
+.floating-ambient-3d {
+  position: absolute;
+  pointer-events: none;
+  z-index: 12;
+  animation: ambientFloat 6s ease-in-out infinite;
+}
+
+.ambient-left-megaphone {
+  top: 75px;
+  left: -120px;
+}
+
+.ambient-right-monitor {
+  top: 85px;
+  right: -120px;
+  animation-delay: -3s;
+}
+
+.ambient-glass-bubble {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(0, 166, 255, 0.35);
+  box-shadow: 0 16px 36px rgba(0, 80, 200, 0.12), inset 0 1px 1px #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0066FF;
+}
+
+@keyframes ambientFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+/* Navigation Arrow Controls */
+.talent-nav-arrows-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.talent-arrow-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid #E2E8F0;
+  background: #F8FAFC;
+  color: #0052CC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.talent-arrow-btn:hover {
+  background: #0052CC;
+  border-color: #0052CC;
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(0, 82, 204, 0.35);
+  transform: scale(1.08);
+}
+
+.talent-arrow-btn:active {
+  transform: scale(0.96);
+}
+
+/* ==========================================================================
+   2. HALF-CIRCLE 3D GLASSMORPHISM ARCH (Matching media_1794915665021)
+   - Overlapping cards fanned along a half-circle dome arc
+   - Center apex card elevated in front (highest z-index: 50)
+   - Side cards tucked under with rotation and downward curve
+   - Pure Frosted Glassmorphism for every card (zero external cartoon images)
+   ========================================================================== */
+.half-circle-stage-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 25px 0 20px;
+}
+
+.half-circle-stage {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  perspective: 1600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  cursor: grab;
+}
+
+.half-circle-stage:active {
+  cursor: grabbing;
+}
+
+/* ==========================================================================
+   SERVICES CARDS (3:4 WEBP BACKGROUND + FROSTED BLUR MASK)
+   - Edge-to-edge 3:4 WebP poster background from ToWebP (33)
+   - Frosted Glass Blur Mask at bottom with backdrop-filter blur
+   - Heading (left) and Arrow Mark (right) - zero unnecessary clutter
+   ========================================================================== */
+.glass-arch-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -155px;
+  margin-top: -230px;
+  width: 310px;
+  height: 460px;
+  border-radius: 26px;
+  background: #040919;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 48px rgba(0, 20, 60, 0.25), 0 2px 8px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: border-color 0.35s ease, 
+              box-shadow 0.35s ease,
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  will-change: transform, opacity;
+  transform-origin: 50% 115%;
+}
+
+.glass-arch-card:hover {
+  border-color: #00A6FF;
+  box-shadow: 0 28px 70px rgba(0, 100, 255, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.glass-arch-card:hover .card-poster-img {
+  transform: scale(1.06);
+}
+
+.glass-arch-card:hover .card-clean-action-btn {
+  background: rgba(0, 166, 255, 0.22);
+  border-color: #00A6FF;
+  box-shadow: 0 8px 24px rgba(0, 166, 255, 0.4);
+}
+
+.glass-arch-card:hover .action-btn-arrow-circle {
+  background: #00A6FF;
+  transform: rotate(45deg);
+  box-shadow: 0 0 16px rgba(0, 166, 255, 0.8);
+}
+
+/* Center Apex Active Card (Luminous Elevated Neon Halo) */
+.glass-arch-card.is-active-apex {
+  border: 2px solid #00A6FF;
+  box-shadow: 0 32px 80px rgba(0, 166, 255, 0.4), 0 0 40px rgba(0, 166, 255, 0.28), inset 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+.glass-arch-card.is-active-apex .card-poster-img {
+  transform: scale(1.04);
+}
+
+.glass-arch-card.is-active-apex .card-clean-action-btn {
+  background: rgba(0, 166, 255, 0.28);
+  border-color: #38BDF8;
+  box-shadow: 0 0 20px rgba(0, 166, 255, 0.45);
+}
+
+.glass-arch-card.is-active-apex .action-btn-arrow-circle {
+  background: #00A6FF;
+  box-shadow: 0 0 16px rgba(0, 166, 255, 0.85);
+}
+
+/* Poster Image Background Wrap */
+.card-poster-bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.card-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+/* Glowing Ambient Halo behind Active Apex Card */
+.glass-apex-aura {
+  position: absolute;
+  inset: -6px;
+  border-radius: 32px;
+  background: radial-gradient(circle at 50% 30%, rgba(0, 166, 255, 0.45) 0%, rgba(0, 82, 204, 0.18) 60%, transparent 100%);
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* Top Specular Sheen (Glossy Glass Reflection) */
+.glass-specular-sheen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   FROSTED BLUR MASK (Full Card Frosted Glass with Cosmic Ambient Gradients)
+   ========================================================================== */
+.card-full-blur-mask {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  border-radius: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(3, 8, 24, 0.42) 0%,
+    rgba(3, 8, 24, 0.22) 35%,
+    rgba(3, 8, 24, 0.48) 70%,
+    rgba(3, 8, 24, 0.88) 100%
+  );
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  pointer-events: none;
+  transition: backdrop-filter 0.35s ease, background 0.35s ease;
+}
+
+.glass-arch-card:hover .card-full-blur-mask {
+  backdrop-filter: blur(8px) saturate(180%);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+  background: linear-gradient(
+    180deg,
+    rgba(3, 8, 24, 0.35) 0%,
+    rgba(3, 8, 24, 0.16) 35%,
+    rgba(3, 8, 24, 0.42) 70%,
+    rgba(3, 8, 24, 0.82) 100%
+  );
+}
+
+/* ==========================================================================
+   CLEAN CARD INTERIOR (Top 2-Line Heading & Bottom Action Button)
+   ========================================================================== */
+.card-clean-interior {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 24px 26px;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+/* Top Heading in 2 Lines */
+.card-top-heading-wrap {
+  width: 100%;
+  padding-top: 4px;
+}
+
+.card-clean-title {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+}
+
+.title-line {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.6px;
+  color: #FFFFFF;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75), 0 0 20px rgba(0, 166, 255, 0.3);
+  display: block;
+}
+
+.title-line-1 {
+  color: #FFFFFF;
+}
+
+.title-line-2 {
+  color: #E0F2FE;
+}
+
+.glass-arch-card:hover .title-line-2,
+.glass-arch-card.is-active-apex .title-line-2 {
+  color: #38BDF8;
+  text-shadow: 0 0 18px rgba(56, 189, 248, 0.65);
+}
+
+/* Bottom Action Button */
+.card-bottom-btn-wrap {
+  width: 100%;
+}
+
+.card-clean-action-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px 12px 20px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.action-btn-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #FFFFFF;
+  transition: color 0.25s ease;
+}
+
+.action-btn-arrow-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #00A6FF;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px rgba(0, 166, 255, 0.6);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+  flex-shrink: 0;
+}
+
+.card-clean-action-btn:hover {
+  background: #00A6FF;
+  border-color: #38BDF8;
+  box-shadow: 0 10px 28px rgba(0, 166, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.card-clean-action-btn:hover .action-btn-arrow-circle {
+  background: #FFFFFF;
+  color: #0052CC;
+  transform: rotate(45deg);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.85);
+}
+
+/* Pagination Dots on White Background */
+.talent-carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.talent-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #CBD5E1;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.talent-dot.active {
+  width: 28px;
+  border-radius: 10px;
+  background: #0052CC;
+  box-shadow: 0 0 10px rgba(0, 82, 204, 0.5);
+}
+
+/* Responsive Breakpoints for Talent Showcase */
+@media (max-width: 1200px) {
+  .floating-cursor, .floating-ambient-3d {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .talent-main-heading {
+    font-size: 40px;
+    letter-spacing: -1.2px;
+  }
+  .half-circle-stage {
+    height: 500px;
+  }
+  .glass-arch-card {
+    width: 280px;
+    height: 440px;
+    margin-left: -140px;
+    margin-top: -220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .talent-showcase-section {
+    padding: 50px 0 80px;
+  }
+  .talent-showcase-container {
+    padding: 0 18px;
+  }
+  .talent-main-heading {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+  .talent-kicker-pill {
+    font-size: 11.5px;
+    padding: 5px 12px;
+  }
+  .talent-desc-paragraph {
+    font-size: 15px;
+  }
+  .half-circle-stage {
+    height: 470px;
+  }
+  .glass-arch-card {
+    width: 260px;
+    height: 430px;
+    margin-left: -130px;
+    margin-top: -215px;
+  }
+  .card-clean-interior {
+    padding: 24px 20px 22px;
+  }
+  .title-line {
+    font-size: 21px;
+  }
+  .card-clean-action-btn {
+    padding: 10px 14px 10px 18px;
+  }
+  .action-btn-text {
+    font-size: 13.5px;
+  }
+  .action-btn-arrow-circle {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .talent-main-heading {
+    font-size: 26px;
+  }
+  .half-circle-stage {
+    height: 440px;
+  }
+  .glass-arch-card {
+    width: 240px;
+    height: 400px;
+    margin-left: -120px;
+    margin-top: -200px;
+  }
+  .card-clean-interior {
+    padding: 20px 16px 18px;
+  }
+  .title-line {
+    font-size: 19px;
+  }
+  .card-clean-action-btn {
+    padding: 9px 12px 9px 16px;
+  }
+  .action-btn-text {
+    font-size: 12.5px;
+  }
+  .action-btn-arrow-circle {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* ==========================================================================
+   FAQ SECTION STACKING CONTEXT & PURE WHITE BACKGROUND
+   ========================================================================== */
+.faq-section {
+  position: relative !important;
+  z-index: 20 !important;
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+}
+
+

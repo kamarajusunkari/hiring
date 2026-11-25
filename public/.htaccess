@@ -1,0 +1,101 @@
+# ========================================================
+# Arora Tech Solutions - Apache .htaccess Configuration
+# Document Root: public/
+# Target: hire.aroratechsolutions.com
+# ========================================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # 1. Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # 2. Enforce trailing slash on directory-style URLs (except existing files)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !/$
+    RewriteCond %{REQUEST_URI} !(^/forms/|^/assets/|\.php$|\.xml$|\.txt$)
+    RewriteRule ^(.*)$ /$1/ [L,R=301]
+
+    # 3. Prevent direct access to .php extension in URL (redirect to clean URL)
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /hire/([a-z0-9\-]+)\.php\ HTTP/ [NC]
+    RewriteRule ^hire/([a-z0-9\-]+)\.php$ /hire/$1/ [R=301,L]
+
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /contact\.php\ HTTP/ [NC]
+    RewriteRule ^contact\.php$ /contact/ [R=301,L]
+
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/ [NC]
+    RewriteRule ^index\.php$ / [R=301,L]
+
+    # 4. Clean URL Rewrites
+    # Homepage
+    RewriteRule ^$ index.php [L]
+
+    # Contact page
+    RewriteRule ^contact/?$ contact.php [L]
+
+    # 12 Role Pages: /hire/<role-slug>/ -> hire/<role-slug>.php
+    RewriteCond %{DOCUMENT_ROOT}/hire/$1.php -f [OR]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^hire/([a-zA-Z0-9\-]+)/?$ hire/$1.php [L,QSA]
+
+    # Sitemap XML rewrite: /sitemap.xml -> sitemap.xml.php
+    RewriteRule ^sitemap\.xml$ sitemap.xml.php [L]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    # Strict-Transport-Security (HSTS)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+
+    # Clickjacking protection
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # MIME-sniffing protection
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Feature & Permission policy
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+    # Content Security Policy (strict yet compatible with modern assets & Google Fonts)
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"
+</IfModule>
+
+# Disable Directory Browsing
+Options -Indexes -MultiViews
+
+# Character Encoding
+AddDefaultCharset UTF-8
+
+# Block Access to Sensitive Files and Extensions
+<FilesMatch "\.(env|example|json|lock|git|svn|sql|md|yml|yaml|ini|log|sh|bak)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Caching for Static Assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
+</IfModule>
