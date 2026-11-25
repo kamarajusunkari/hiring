@@ -1224,7 +1224,7 @@ html {
   }
 }
 
-/* 1024px: Stack layout, heading 38px, min 50px header gap, circles scale 0.56 */
+/* 1024px: Stack layout, heading 42px, min 50px header gap, circles scale 0.62 */
 @media (max-width: 1024px) {
   .digital-gravity-header-wrapper {
     padding: 0 14px;
@@ -1257,9 +1257,9 @@ html {
     margin: 0 auto;
   }
   .hero-typewriter-heading {
-    font-size: 38px;
-    line-height: 44px;
-    min-height: 98px;
+    font-size: 42px;
+    line-height: 48px;
+    min-height: 108px;
     letter-spacing: -1px;
   }
   .text-dark-slice {
@@ -1288,7 +1288,7 @@ html {
     position: relative;
     margin-top: 8px;
     width: 100%;
-    height: 500px;
+    height: 555px;
     overflow: visible;
     display: flex;
     align-items: center;
@@ -1298,12 +1298,12 @@ html {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.56);
+    transform: translate(-50%, -50%) scale(0.62);
     margin: 0;
   }
 }
 
-/* 768px: Hide nav, heading 26px, min 50px header gap, circles scale 0.42 */
+/* 768px: Hide nav, heading 29px, min 50px header gap, circles scale 0.48 */
 @media (max-width: 768px) {
   .digital-gravity-header-wrapper {
     padding: 0 10px;
@@ -1342,13 +1342,13 @@ html {
     padding-top: 0;
   }
   .hero-typewriter-heading {
-    font-size: 26px;
-    line-height: 32px;
-    min-height: 74px;
+    font-size: 29px;
+    line-height: 35px;
+    min-height: 82px;
     letter-spacing: -0.6px;
   }
   .typewriter-cursor {
-    height: 22px;
+    height: 24px;
     width: 2.5px;
   }
   .hero-cta-wrapper {
@@ -1363,10 +1363,10 @@ html {
   }
   .hero-right-visualization {
     margin-top: 6px;
-    height: 376px;
+    height: 430px;
   }
   .circles-vis-wrapper {
-    transform: translate(-50%, -50%) scale(0.42);
+    transform: translate(-50%, -50%) scale(0.48);
   }
   .logo-ticker-section {
     padding: 24px 0 32px;
@@ -1394,7 +1394,7 @@ html {
   }
 }
 
-/* 480px: Heading 21px, min 50px header gap, circles scale 0.31 so full orbit fits cleanly */
+/* 480px: Heading 24px, min 50px header gap, circles scale 0.36 so full orbit fits cleanly */
 @media (max-width: 480px) {
   .digital-gravity-header-wrapper {
     margin-bottom: 16px;
@@ -1423,13 +1423,13 @@ html {
     padding-top: 0;
   }
   .hero-typewriter-heading {
-    font-size: 21px;
-    line-height: 27px;
-    min-height: 60px;
-    letter-spacing: -0.3px;
+    font-size: 24px;
+    line-height: 30px;
+    min-height: 68px;
+    letter-spacing: -0.35px;
   }
   .typewriter-cursor {
-    height: 18px;
+    height: 20px;
     width: 2px;
   }
   .hero-cta-wrapper {
@@ -1445,10 +1445,10 @@ html {
   }
   .hero-right-visualization {
     margin-top: 4px;
-    height: 280px;
+    height: 324px;
   }
   .circles-vis-wrapper {
-    transform: translate(-50%, -50%) scale(0.31);
+    transform: translate(-50%, -50%) scale(0.36);
   }
   .hero-smooth-merge-container {
     margin-top: 14px;
@@ -1473,15 +1473,15 @@ html {
 /* 375px: Extra compact mobile devices */
 @media (max-width: 375px) {
   .hero-typewriter-heading {
-    font-size: 19px;
-    line-height: 25px;
-    min-height: 54px;
+    font-size: 21px;
+    line-height: 27px;
+    min-height: 60px;
   }
   .hero-right-visualization {
-    height: 252px;
+    height: 298px;
   }
   .circles-vis-wrapper {
-    transform: translate(-50%, -50%) scale(0.28);
+    transform: translate(-50%, -50%) scale(0.33);
   }
 }
 
