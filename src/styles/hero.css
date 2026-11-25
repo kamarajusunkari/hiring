@@ -1224,12 +1224,12 @@ html {
   }
 }
 
-/* 1024px: Stack layout, heading 46px, circles scale 0.68, nav gap shrinks */
+/* 1024px: Stack layout, heading 38px, min 50px header gap, circles scale 0.56 */
 @media (max-width: 1024px) {
   .digital-gravity-header-wrapper {
     padding: 0 14px;
     top: 12px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
   .digital-gravity-pill {
     padding: 8px 14px 8px 20px;
@@ -1243,24 +1243,24 @@ html {
   }
   .hero-main-container {
     flex-direction: column;
-    padding: 24px 28px 0;
+    padding: 50px 28px 0;
     min-height: auto;
     text-align: center;
-    gap: 24px;
+    gap: 18px;
   }
   .hero-left-content {
     flex: 0 1 auto;
     width: 100%;
     max-width: 720px;
     align-items: center;
-    padding-top: 12px;
+    padding-top: 0;
     margin: 0 auto;
   }
   .hero-typewriter-heading {
-    font-size: 46px;
-    line-height: 50px;
-    min-height: 120px;
-    letter-spacing: -1.2px;
+    font-size: 38px;
+    line-height: 44px;
+    min-height: 98px;
+    letter-spacing: -1px;
   }
   .text-dark-slice {
     color: #FFFFFF !important;
@@ -1271,33 +1271,39 @@ html {
     text-shadow: 0 0 20px rgba(0, 166, 255, 0.7);
   }
   .hero-cta-wrapper {
-    margin-top: 28px;
+    margin-top: 22px;
     width: 100%;
     display: flex;
     justify-content: center;
   }
   .hero-cursor-element {
-    margin: 20px auto 0 auto;
+    margin: 16px auto 0 auto;
     justify-content: center;
     display: inline-flex;
     align-items: center;
   }
   .hero-right-visualization {
-    margin-top: 12px;
+    flex: 0 0 auto;
+    min-height: 0;
+    position: relative;
+    margin-top: 8px;
     width: 100%;
-    height: 610px;
+    height: 500px;
     overflow: visible;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .circles-vis-wrapper {
-    transform: scale(0.68);
-    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.56);
+    margin: 0;
   }
 }
 
-/* 768px: Hide nav, heading 33px, circles scale 0.52 */
+/* 768px: Hide nav, heading 26px, min 50px header gap, circles scale 0.42 */
 @media (max-width: 768px) {
   .digital-gravity-header-wrapper {
     padding: 0 10px;
@@ -1329,39 +1335,38 @@ html {
     height: 36px;
   }
   .hero-main-container {
-    padding: 20px 16px 0;
-    gap: 18px;
+    padding: 50px 16px 0;
+    gap: 14px;
   }
   .hero-left-content {
-    padding-top: 8px;
+    padding-top: 0;
   }
   .hero-typewriter-heading {
-    font-size: 33px;
-    line-height: 39px;
-    min-height: 95px;
-    letter-spacing: -0.8px;
+    font-size: 26px;
+    line-height: 32px;
+    min-height: 74px;
+    letter-spacing: -0.6px;
   }
   .typewriter-cursor {
-    height: 28px;
+    height: 22px;
     width: 2.5px;
   }
   .hero-cta-wrapper {
-    margin-top: 22px;
-  }
-  .btn-start-project {
-    padding: 12px 24px;
-    font-size: 15px;
-  }
-  .hero-cursor-element {
     margin-top: 16px;
   }
+  .btn-start-project {
+    padding: 11px 22px;
+    font-size: 14.5px;
+  }
+  .hero-cursor-element {
+    margin-top: 14px;
+  }
   .hero-right-visualization {
-    margin-top: 8px;
-    height: 465px;
+    margin-top: 6px;
+    height: 376px;
   }
   .circles-vis-wrapper {
-    transform: scale(0.52);
-    margin: 0 auto;
+    transform: translate(-50%, -50%) scale(0.42);
   }
   .logo-ticker-section {
     padding: 24px 0 32px;
@@ -1382,17 +1387,17 @@ html {
 
 @media (max-width: 768px) {
   .hero-smooth-merge-container {
-    margin-top: 28px;
+    margin-top: 20px;
   }
   .hero-merge-curve-svg {
-    height: 48px;
+    height: 44px;
   }
 }
 
-/* 480px: Heading 25px, circles scale 0.38 so full 890px orbit fits 375px+ screens uncropped */
+/* 480px: Heading 21px, min 50px header gap, circles scale 0.31 so full orbit fits cleanly */
 @media (max-width: 480px) {
   .digital-gravity-header-wrapper {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
   .digital-gravity-pill {
     padding: 6px 10px 6px 14px;
@@ -1411,28 +1416,28 @@ html {
     height: 34px;
   }
   .hero-main-container {
-    padding: 16px 12px 0;
-    gap: 12px;
+    padding: 50px 14px 0;
+    gap: 10px;
   }
   .hero-left-content {
-    padding-top: 6px;
+    padding-top: 0;
   }
   .hero-typewriter-heading {
-    font-size: 25px;
-    line-height: 31px;
-    min-height: 75px;
-    letter-spacing: -0.4px;
+    font-size: 21px;
+    line-height: 27px;
+    min-height: 60px;
+    letter-spacing: -0.3px;
   }
   .typewriter-cursor {
-    height: 22px;
+    height: 18px;
     width: 2px;
   }
   .hero-cta-wrapper {
-    margin-top: 18px;
+    margin-top: 14px;
   }
   .btn-start-project {
-    padding: 11px 20px;
-    font-size: 14px;
+    padding: 10px 20px;
+    font-size: 13.5px;
   }
   .cursor-name-badge {
     font-size: 13px;
@@ -1440,11 +1445,13 @@ html {
   }
   .hero-right-visualization {
     margin-top: 4px;
-    height: 342px;
+    height: 280px;
   }
   .circles-vis-wrapper {
-    transform: scale(0.38);
-    margin: 0 auto;
+    transform: translate(-50%, -50%) scale(0.31);
+  }
+  .hero-smooth-merge-container {
+    margin-top: 14px;
   }
   .logo-ticker-section {
     padding: 18px 0 24px;
@@ -1466,16 +1473,15 @@ html {
 /* 375px: Extra compact mobile devices */
 @media (max-width: 375px) {
   .hero-typewriter-heading {
-    font-size: 22px;
-    line-height: 28px;
-    min-height: 70px;
+    font-size: 19px;
+    line-height: 25px;
+    min-height: 54px;
   }
   .hero-right-visualization {
-    height: 316px;
+    height: 252px;
   }
   .circles-vis-wrapper {
-    transform: scale(0.35);
-    margin: 0 auto;
+    transform: translate(-50%, -50%) scale(0.28);
   }
 }
 
