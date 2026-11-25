@@ -1224,7 +1224,7 @@ html {
   }
 }
 
-/* 1024px: Stack layout, heading 42px, min 50px header gap, circles scale 0.62 */
+/* 1024px: Stack layout, heading 42px, min 50px header gap, circles scale 0.66 */
 @media (max-width: 1024px) {
   .digital-gravity-header-wrapper {
     padding: 0 14px;
@@ -1286,9 +1286,9 @@ html {
     flex: 0 0 auto;
     min-height: 0;
     position: relative;
-    margin-top: 8px;
+    margin-top: 28px;
     width: 100%;
-    height: 555px;
+    height: 590px;
     overflow: visible;
     display: flex;
     align-items: center;
@@ -1298,12 +1298,12 @@ html {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.62);
+    transform: translate(-50%, -50%) scale(0.66);
     margin: 0;
   }
 }
 
-/* 768px: Hide nav, heading 29px, min 50px header gap, circles scale 0.48 */
+/* 768px: Hide nav, heading 29px, min 50px header gap, circles scale 0.52 */
 @media (max-width: 768px) {
   .digital-gravity-header-wrapper {
     padding: 0 10px;
@@ -1362,11 +1362,11 @@ html {
     margin-top: 14px;
   }
   .hero-right-visualization {
-    margin-top: 6px;
-    height: 430px;
+    margin-top: 26px;
+    height: 466px;
   }
   .circles-vis-wrapper {
-    transform: translate(-50%, -50%) scale(0.48);
+    transform: translate(-50%, -50%) scale(0.52);
   }
   .logo-ticker-section {
     padding: 24px 0 32px;
@@ -1394,7 +1394,7 @@ html {
   }
 }
 
-/* 480px: Heading 24px, min 50px header gap, circles scale 0.36 so full orbit fits cleanly */
+/* 480px: Heading 24px, min 50px header gap, circles scale 0.40 with button gap */
 @media (max-width: 480px) {
   .digital-gravity-header-wrapper {
     margin-bottom: 16px;
@@ -1444,11 +1444,11 @@ html {
     padding: 5px 12px;
   }
   .hero-right-visualization {
-    margin-top: 4px;
-    height: 324px;
+    margin-top: 26px;
+    height: 360px;
   }
   .circles-vis-wrapper {
-    transform: translate(-50%, -50%) scale(0.36);
+    transform: translate(-50%, -50%) scale(0.4);
   }
   .hero-smooth-merge-container {
     margin-top: 14px;
@@ -1478,10 +1478,11 @@ html {
     min-height: 60px;
   }
   .hero-right-visualization {
-    height: 298px;
+    margin-top: 22px;
+    height: 324px;
   }
   .circles-vis-wrapper {
-    transform: translate(-50%, -50%) scale(0.33);
+    transform: translate(-50%, -50%) scale(0.36);
   }
 }
 
