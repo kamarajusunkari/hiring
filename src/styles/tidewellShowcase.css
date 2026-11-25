@@ -11,7 +11,7 @@
   --tw-cta-hover: #2E3546;
 }
 
-/* Section Container (Sticky scroll travel for horizontal card row) */
+/* Section Container */
 .tidewell-scroll-section {
   position: relative;
   width: 100%;
@@ -20,20 +20,19 @@
   z-index: 10;
 }
 
-/* Sticky Stage sized tightly to content (no blank space above/below carousel) */
+/* Inner Section Stage */
 .tidewell-pinned-stage {
-  position: sticky;
-  top: 0;
+  position: relative;
   width: 100%;
   height: auto;
-  overflow: hidden;
+  overflow: visible;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px 0 16px;
-  gap: 8px;
+  padding: 20px 0 18px;
+  gap: 10px;
   user-select: none;
   z-index: 15;
 }
@@ -155,7 +154,7 @@
 }
 
 /* ==========================================================================
-   SCROLL-DRIVEN HORIZONTAL CARD TRACK (LARGER CARDS, NO MIDDLE BLUR)
+   SMOOTH MANUAL HORIZONTAL SCROLL & DRAGGABLE CARD TRACK
    ========================================================================== */
 .tidewell-carousel-viewport {
   position: relative;
@@ -164,16 +163,32 @@
   min-height: 0;
   display: flex;
   align-items: flex-start;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  touch-action: pan-x pan-y;
+  user-select: none;
   z-index: 10;
+}
+
+.tidewell-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.tidewell-carousel-viewport.is-dragging {
+  cursor: grabbing;
 }
 
 .tidewell-carousel-track {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 28px;
-  padding: 4px clamp(20px, 6vw, 80px) 6px;
+  gap: 24px;
+  padding: 4px clamp(20px, 6vw, 80px) 8px;
   width: max-content;
 }
 
@@ -188,8 +203,10 @@
   border: 1.5px solid rgba(15, 23, 42, 0.1);
   box-shadow: none;
   overflow: hidden;
-  cursor: pointer;
+  cursor: inherit;
   user-select: none;
+  -webkit-user-drag: none;
+  transition: border-color 0.22s ease;
 }
 
 .tidewell-card:hover {
@@ -212,6 +229,9 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 
 /* Edge-only contrast scrim + top frosted blur behind heading & description */

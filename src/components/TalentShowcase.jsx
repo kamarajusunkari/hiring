@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import '../styles/tidewellShowcase.css';
 
 /**
  * Talent & Services Carousel Section
- * Clean horizontal card carousel driven directly by vertical page scroll (no animations).
+ * Smooth manual horizontal scroll & draggable card carousel for desktop and mobile.
  */
 
 const TALENT_CARDS = [
@@ -107,44 +107,129 @@ const TALENT_CARDS = [
 ];
 
 export default function TalentShowcase({ onSelectRole }) {
-  const containerRef = useRef(null);
-  const stageRef = useRef(null);
-  const trackRef = useRef(null);
+  const viewportRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
 
-  const [scrollX, setScrollX] = useState(0);
-  const [sectionHeight, setSectionHeight] = useState(null);
+  const dragRef = useRef({
+    active: false,
+    startX: 0,
+    startScrollLeft: 0,
+    lastX: 0,
+    lastTime: 0,
+    velocity: 0,
+    hasMoved: false,
+    suppressClick: false,
+    rafId: null,
+  });
 
-  const updateMetricsAndScroll = useCallback(() => {
-    const container = containerRef.current;
-    const stage = stageRef.current;
-    const track = trackRef.current;
-    if (!container || !stage || !track) return;
-
-    const overflowX = Math.max(0, track.scrollWidth - stage.clientWidth);
-    const stageHeight = stage.offsetHeight || window.innerHeight;
-    setSectionHeight(stageHeight + overflowX);
-
-    const rect = container.getBoundingClientRect();
-    const traveled = Math.max(0, Math.min(overflowX, -rect.top));
-    setScrollX(traveled);
-  }, []);
+  const stopMomentum = () => {
+    if (dragRef.current.rafId !== null) {
+      cancelAnimationFrame(dragRef.current.rafId);
+      dragRef.current.rafId = null;
+    }
+  };
 
   useEffect(() => {
-    updateMetricsAndScroll();
+    const handleMouseMove = (e) => {
+      const state = dragRef.current;
+      const viewport = viewportRef.current;
+      if (!state.active || !viewport) return;
 
-    const ro = new ResizeObserver(updateMetricsAndScroll);
-    if (stageRef.current) ro.observe(stageRef.current);
-    if (trackRef.current) ro.observe(trackRef.current);
+      const dx = e.pageX - state.startX;
+      if (!state.hasMoved && Math.abs(dx) > 5) {
+        state.hasMoved = true;
+      }
 
-    window.addEventListener('scroll', updateMetricsAndScroll, { passive: true });
-    window.addEventListener('resize', updateMetricsAndScroll);
+      if (state.hasMoved) {
+        e.preventDefault();
+        viewport.scrollLeft = state.startScrollLeft - dx;
+
+        const now = performance.now();
+        const dt = Math.max(1, now - state.lastTime);
+        const instantVel = (e.pageX - state.lastX) / dt; // px per ms
+        state.velocity = state.velocity * 0.65 + instantVel * 0.35;
+        state.lastX = e.pageX;
+        state.lastTime = now;
+      }
+    };
+
+    const handleMouseUp = () => {
+      const state = dragRef.current;
+      const viewport = viewportRef.current;
+      if (!state.active) return;
+
+      state.active = false;
+      setIsDragging(false);
+
+      if (state.hasMoved) {
+        state.suppressClick = true;
+        setTimeout(() => {
+          dragRef.current.suppressClick = false;
+        }, 60);
+      }
+
+      // Smooth inertia glide on release
+      if (viewport && state.hasMoved && Math.abs(state.velocity) > 0.08) {
+        let vel = state.velocity * 16; // scale to px per ~16ms frame
+        let lastFrame = performance.now();
+
+        const step = (now) => {
+          const dtScale = Math.min(2.5, (now - lastFrame) / 16.67);
+          lastFrame = now;
+
+          viewport.scrollLeft -= vel * dtScale;
+          vel *= Math.pow(0.94, dtScale);
+
+          const atEdge =
+            viewport.scrollLeft <= 0 ||
+            viewport.scrollLeft >= viewport.scrollWidth - viewport.clientWidth - 1;
+
+          if (Math.abs(vel) > 0.25 && !atEdge) {
+            dragRef.current.rafId = requestAnimationFrame(step);
+          } else {
+            dragRef.current.rafId = null;
+          }
+        };
+
+        state.rafId = requestAnimationFrame(step);
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('blur', handleMouseUp);
 
     return () => {
-      ro.disconnect();
-      window.removeEventListener('scroll', updateMetricsAndScroll);
-      window.removeEventListener('resize', updateMetricsAndScroll);
+      stopMomentum();
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('blur', handleMouseUp);
     };
-  }, [updateMetricsAndScroll]);
+  }, []);
+
+  const handleMouseDown = (e) => {
+    if (e.button !== 0 || !viewportRef.current) return;
+    stopMomentum();
+
+    const state = dragRef.current;
+    state.active = true;
+    state.startX = e.pageX;
+    state.startScrollLeft = viewportRef.current.scrollLeft;
+    state.lastX = e.pageX;
+    state.lastTime = performance.now();
+    state.velocity = 0;
+    state.hasMoved = false;
+    state.suppressClick = false;
+    setIsDragging(true);
+  };
+
+  const handleViewportClickCapture = (e) => {
+    if (dragRef.current.suppressClick) {
+      e.preventDefault();
+      e.stopPropagation();
+      dragRef.current.suppressClick = false;
+    }
+  };
 
   const handleSelect = (e, slug) => {
     e.stopPropagation();
@@ -152,7 +237,7 @@ export default function TalentShowcase({ onSelectRole }) {
       onSelectRole(slug);
     } else {
       const el = document.getElementById('enquiry-section') || document.getElementById('quote');
-      if (el) el.scrollIntoView();
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -161,18 +246,13 @@ export default function TalentShowcase({ onSelectRole }) {
     e.stopPropagation();
     const el = document.getElementById('process-section');
     if (el) {
-      el.scrollIntoView();
+      el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <section
-      ref={containerRef}
-      className="tidewell-scroll-section"
-      id="talent-showcase"
-      style={sectionHeight ? { height: `${sectionHeight}px` } : undefined}
-    >
-      <div ref={stageRef} className="tidewell-pinned-stage">
+    <section className="tidewell-scroll-section" id="talent-showcase">
+      <div className="tidewell-pinned-stage">
         {/* 1. Header Block */}
         <div className="tidewell-process-block">
           <div className="tidewell-kicker-pill">
@@ -209,13 +289,14 @@ export default function TalentShowcase({ onSelectRole }) {
           </button>
         </div>
 
-        {/* 2. Scroll-Driven Horizontal Card Carousel */}
-        <div className="tidewell-carousel-viewport">
-          <div
-            ref={trackRef}
-            className="tidewell-carousel-track"
-            style={{ transform: `translate3d(${-scrollX}px, 0, 0)` }}
-          >
+        {/* 2. Smooth Manual Scroll & Draggable Horizontal Card Carousel */}
+        <div
+          ref={viewportRef}
+          className={`tidewell-carousel-viewport${isDragging ? ' is-dragging' : ''}`}
+          onMouseDown={handleMouseDown}
+          onClickCapture={handleViewportClickCapture}
+        >
+          <div className="tidewell-carousel-track">
             {TALENT_CARDS.map((card) => (
               <div
                 key={card.id}
@@ -231,6 +312,7 @@ export default function TalentShowcase({ onSelectRole }) {
                     alt={`${card.line1} ${card.line2}`}
                     className="tidewell-card-img"
                     loading="lazy"
+                    draggable={false}
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                     }}
