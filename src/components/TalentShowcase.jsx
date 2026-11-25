@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { openWhatsApp } from '../data/brandConfig';
 import '../styles/tidewellShowcase.css';
 
 /**
@@ -106,7 +107,7 @@ const TALENT_CARDS = [
   }
 ];
 
-export default function TalentShowcase({ onSelectRole }) {
+export default function TalentShowcase({ onSelectRole, onExploreClick }) {
   const viewportRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -236,17 +237,18 @@ export default function TalentShowcase({ onSelectRole }) {
     if (onSelectRole) {
       onSelectRole(slug);
     } else {
-      const el = document.getElementById('enquiry-section') || document.getElementById('quote');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      const formattedRole = slug ? slug.replace(/-/g, ' ') : 'developers';
+      openWhatsApp(`Hi Arora Tech Solutions, I am interested in hiring ${formattedRole}.`);
     }
   };
 
-  const handleScrollToNextSection = (e) => {
+  const handleExploreCta = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const el = document.getElementById('process-section');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+    if (onExploreClick) {
+      onExploreClick();
+    } else {
+      openWhatsApp('Hi Arora Tech Solutions, I would like to explore hiring top pre-vetted developers.');
     }
   };
 
@@ -279,8 +281,8 @@ export default function TalentShowcase({ onSelectRole }) {
           <button
             type="button"
             className="tidewell-process-cta-btn"
-            onClick={handleScrollToNextSection}
-            aria-label="View all collections and continue to next section"
+            onClick={handleExploreCta}
+            aria-label="Connect on WhatsApp to explore collections"
           >
             <span>View All Collections</span>
             <span className="tidewell-cta-arrow">

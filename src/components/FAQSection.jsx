@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown, MessageSquare, ArrowUpRight } from 'lucide-react';
+import { openWhatsApp } from '../data/brandConfig';
 import '../styles/faqSection.css';
 
 /**
@@ -122,7 +123,7 @@ export default function FAQSection({ onAskQuestionClick }) {
   }, []);
 
   const toggleAccordion = (id) => {
-    setOpenIds(prev => 
+    setOpenIds(prev =>
       prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
     );
   };
@@ -130,7 +131,7 @@ export default function FAQSection({ onAskQuestionClick }) {
   const handlePillClick = (targetId) => {
     // 1. Ensure target item is open
     setOpenIds(prev => prev.includes(targetId) ? prev : [...prev, targetId]);
-    
+
     // 2. Highlight and smoothly scroll into view
     setHighlightedId(targetId);
     setTimeout(() => {
@@ -161,7 +162,7 @@ export default function FAQSection({ onAskQuestionClick }) {
     const isHighlighted = highlightedId === item.id;
 
     return (
-      <div 
+      <div
         key={item.id}
         ref={el => itemRefs.current[item.id] = el}
         className={`faq-accordion-card ${isOpen ? 'is-open' : ''} ${isHighlighted ? 'is-highlighted' : ''}`}
@@ -188,8 +189,8 @@ export default function FAQSection({ onAskQuestionClick }) {
   };
 
   return (
-    <section 
-      className="faq-section" 
+    <section
+      className="faq-section"
       id="faq"
       style={{
         position: 'relative',
@@ -264,10 +265,16 @@ export default function FAQSection({ onAskQuestionClick }) {
             <h4>Have a specific engineering or staffing question?</h4>
             <p>Talk directly with an Arora Technical Hiring Director. We review your tech requirements and recommend candidate profiles in 24 hours.</p>
           </div>
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="faq-cta-btn"
-            onClick={onAskQuestionClick}
+            onClick={() => {
+              if (onAskQuestionClick) {
+                onAskQuestionClick();
+              } else {
+                openWhatsApp('Hi Arora Tech Solutions, I would like to speak with your technical hiring team.');
+              }
+            }}
           >
             <MessageSquare size={15} />
             <span>Speak with Our Team</span>

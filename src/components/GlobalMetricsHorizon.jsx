@@ -10,6 +10,7 @@ import {
   TrendingUp,
   ChevronRight
 } from 'lucide-react';
+import { openWhatsApp } from '../data/brandConfig';
 import '../styles/globalMetricsHorizon.css';
 
 const ARORA_METRICS = [
@@ -68,8 +69,7 @@ export default function GlobalMetricsHorizon({ onHireClick }) {
     if (onHireClick) {
       onHireClick();
     } else {
-      const el = document.getElementById('enquiry-section') || document.getElementById('quote');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      openWhatsApp('Hi Arora Tech Solutions, I would like to hire pre-vetted engineers.');
     }
   };
 

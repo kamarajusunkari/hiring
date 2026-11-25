@@ -1,4 +1,5 @@
 import React from 'react';
+import { getWhatsAppUrl } from '../data/brandConfig';
 import '../styles/footer.css';
 
 /**
@@ -201,7 +202,7 @@ export default function Footer() {
                 <a href="#talent-showcase">Talent Showcase</a>
                 <a href="#why-choose-us">Why Choose Us</a>
                 <a href="#faq">FAQ</a>
-                <a href="#quote">Hire Developers</a>
+                <a href={getWhatsAppUrl('Hi Arora Tech Solutions, I would like to hire developers.')} target="_blank" rel="noopener noreferrer">Hire Developers</a>
               </div>
 
               {/* Column 4 — Company */}

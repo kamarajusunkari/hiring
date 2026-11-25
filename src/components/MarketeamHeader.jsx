@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   ChevronDown, ChevronRight, Mail, Phone 
 } from 'lucide-react';
-import { BRAND } from '../data/brandConfig';
+import { BRAND, openWhatsApp } from '../data/brandConfig';
 import { SERVICES_MENU, INDUSTRIES_MENU, HIRING_SOLUTIONS_MENU } from '../data/navigationData';
 
 /**
@@ -36,7 +36,11 @@ export default function MarketeamHeader({ onHireNowClick, onTalkToTeamClick, onS
 
   const handleRoleSelect = (slug) => {
     setActiveMenu(null);
-    if (onSelectRole) onSelectRole(slug);
+    if (onSelectRole) {
+      onSelectRole(slug);
+    } else {
+      openWhatsApp(`Hi Arora Tech Solutions, I am interested in hiring ${slug.replace(/-/g, ' ')}.`);
+    }
   };
 
   const handleHireClick = () => {
@@ -44,8 +48,7 @@ export default function MarketeamHeader({ onHireNowClick, onTalkToTeamClick, onS
     if (onHireNowClick) {
       onHireNowClick();
     } else {
-      const el = document.getElementById('enquiry-section') || document.getElementById('quote');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      openWhatsApp('Hi Arora Tech Solutions, I would like to hire top developers & specialists.');
     }
   };
 
@@ -53,7 +56,7 @@ export default function MarketeamHeader({ onHireNowClick, onTalkToTeamClick, onS
     if (onTalkToTeamClick) {
       onTalkToTeamClick();
     } else {
-      handleHireClick();
+      openWhatsApp('Hi Arora Tech Solutions, I would like to speak with your technical hiring team.');
     }
   };
 

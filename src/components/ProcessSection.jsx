@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { openWhatsApp } from '../data/brandConfig';
 import '../styles/processSection.css';
 
 const ASSETS = {
@@ -228,8 +229,7 @@ export default function ProcessSection({ onStartHiringClick }) {
     if (onStartHiringClick) {
       onStartHiringClick();
     } else {
-      const el = document.getElementById('enquiry-section') || document.getElementById('quote');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      openWhatsApp('Hi Arora Tech Solutions, I would like to start hiring pre-vetted engineers.');
     }
   };
 
