@@ -663,59 +663,55 @@
     padding: 24px 16px 0;
   }
   .faq-hero-stage {
-    min-height: auto;
-    padding: 40px 12px 24px;
-    gap: 16px;
-  }
-  .faq-pills-field {
-    position: static;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    order: 2;
-    -webkit-mask-image: none;
-    mask-image: none;
+    height: clamp(320px, 44vh, 380px);
+    padding: 20px 12px;
   }
   .faq-hero-center {
-    order: 1;
-    padding: 12px 8px;
-    background: none;
+    padding: 24px 36px;
+    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.96) 54%, rgba(255, 255, 255, 0) 100%);
   }
   .faq-sticker-pill {
-    position: static;
-    top: auto;
-    left: auto;
-    right: auto;
-    display: inline-flex;
-    margin: 0;
-    font-size: 12.5px;
-    padding: 7px 14px;
-    white-space: normal;
-    text-align: center;
-    opacity: 1 !important;
-    animation: none !important;
+    font-size: 11px;
+    padding: 6px 13px;
   }
-  .pill-1 { transform: rotate(-3deg); }
-  .pill-2 { transform: rotate(3deg); }
-  .pill-3 { transform: rotate(-2deg); }
-  .pill-4 { transform: rotate(2deg); }
-  .pill-5 { display: inline-flex; transform: rotate(-2deg); }
-  .pill-6 { transform: rotate(2deg); }
-  .pill-7 { transform: rotate(-2deg); }
-  .pill-8,
+  .pill-1 {
+    left: 2%;
+  }
+  .pill-2 {
+    right: 2%;
+  }
+  .pill-3 {
+    left: 8%;
+  }
+  .pill-4 {
+    right: 8%;
+  }
+  .pill-5,
   .pill-9,
-  .pill-10 { display: none; }
+  .pill-10 {
+    display: none;
+  }
+  .pill-6 {
+    right: 16%;
+  }
+  .pill-7 {
+    left: 16%;
+  }
+  .pill-8 {
+    display: none;
+  }
 
   .faq-hero-title {
-    margin-bottom: 16px;
+    font-size: clamp(38px, 10vw, 48px);
+    margin-bottom: 12px;
   }
 
   .faq-hero-tagline {
+    font-size: 11px;
     text-align: center;
     justify-content: center;
     padding-left: 0;
-    margin-top: 20px;
+    margin-top: 6px;
   }
 
   .faq-card-button {

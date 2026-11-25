@@ -472,7 +472,8 @@
   }
 
   .footer-nav-cols {
-    gap: 40px;
+    flex-wrap: wrap;
+    gap: 28px 36px;
   }
 
   .footer-bottom {

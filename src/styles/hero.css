@@ -1364,6 +1364,15 @@ html {
   }
 }
 
+@media (max-width: 768px) {
+  .hero-smooth-merge-container {
+    margin-top: 28px;
+  }
+  .hero-merge-curve-svg {
+    height: 48px;
+  }
+}
+
 /* 480px: Heading 25px, circles scale 0.44, smaller buttons/logos */
 @media (max-width: 480px) {
   .digital-gravity-pill {
