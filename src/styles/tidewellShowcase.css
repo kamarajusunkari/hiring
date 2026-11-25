@@ -390,8 +390,8 @@
    ========================================================================== */
 @media (max-width: 820px) {
   .tidewell-pinned-stage {
-    padding: 16px 0 12px;
-    gap: 8px;
+    padding: 16px 0 14px;
+    gap: 24px;
   }
   .tidewell-process-block {
     padding: 0 16px;
@@ -407,7 +407,7 @@
     height: 36px;
     padding: 0 16px;
     font-size: 12.5px;
-    margin-top: 6px;
+    margin-top: 8px;
   }
   .tidewell-carousel-track {
     gap: 16px;
