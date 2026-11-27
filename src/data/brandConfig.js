@@ -7,10 +7,10 @@ export const BRAND = {
   hireSiteUrl: 'https://hire.aroratechsolutions.com',
   contact: {
     email: 'hire@aroratechsolutions.com',
-    phone: '+91 92479 16134',
-    phoneRaw: '+919247916134',
-    whatsappNumber: '919247916134',
-    whatsappUrl: 'https://wa.me/919247916134',
+    phone: '+91 94938 98990',
+    phoneRaw: '+919493898990',
+    whatsappNumber: '919493898990',
+    whatsappUrl: 'https://wa.me/919493898990',
     hours: 'Monday – Friday: 9:00 AM – 6:00 PM EST',
     address: 'Suite 400, Innovation Drive, New York, NY 10001, United States'
   },

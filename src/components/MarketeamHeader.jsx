@@ -198,7 +198,6 @@ export default function MarketeamHeader({ onHireNowClick, onTalkToTeamClick, onS
       {/* ====================================================================
           DIGITAL GRAVITY STYLE MEGA-DROPDOWNS
           - 2 Columns with Glowing Neon Blue Dots, Divider Lines & Chevrons
-          - 1 Right Section with Title + 4x4 Boxed Logo Grid
           ==================================================================== */}
       {activeMenu === 'services' && (
         <div className="dg-mega-dropdown" role="region" aria-label="Services Menu">
@@ -239,21 +238,6 @@ export default function MarketeamHeader({ onHireNowClick, onTalkToTeamClick, onS
               ))}
             </div>
           </div>
-
-            {/* Right Section: Heading + 4x4 Boxed Client Grid */}
-            <div className="dg-dropdown-feature">
-              <h3 className="dg-feature-title">{SERVICES_MENU.heading}</h3>
-              <div className="dg-boxed-logo-grid">
-                {SERVICES_MENU.logos.map((logo, lIdx) => {
-                  const brandKey = logo.name.toLowerCase().replace(/[^a-z0-9]/g, '');
-                  return (
-                    <div key={lIdx} className="dg-logo-cell">
-                      <span className={`dg-cell-brand-text brand-${brandKey}`}>{logo.name}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
         </div>
       )}
 
@@ -290,21 +274,6 @@ export default function MarketeamHeader({ onHireNowClick, onTalkToTeamClick, onS
                   <ChevronRight size={15} className="dg-item-chevron" />
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Right Section: Heading + 4x4 Boxed Trust Grid */}
-          <div className="dg-dropdown-feature">
-            <h3 className="dg-feature-title">{HIRING_SOLUTIONS_MENU.heading}</h3>
-            <div className="dg-boxed-logo-grid">
-              {HIRING_SOLUTIONS_MENU.logos.map((logo, lIdx) => {
-                const brandKey = logo.name.toLowerCase().replace(/[^a-z0-9]/g, '');
-                return (
-                  <div key={lIdx} className="dg-logo-cell">
-                    <span className={`dg-cell-brand-text brand-${brandKey}`}>{logo.name}</span>
-                  </div>
-                );
-              })}
             </div>
           </div>
         </div>
@@ -347,21 +316,6 @@ export default function MarketeamHeader({ onHireNowClick, onTalkToTeamClick, onS
                   <ChevronRight size={15} className="dg-item-chevron" />
                 </a>
               ))}
-            </div>
-          </div>
-
-          {/* Right Section: Heading + 4x4 Boxed Enterprise Compliance Grid */}
-          <div className="dg-dropdown-feature">
-            <h3 className="dg-feature-title">{INDUSTRIES_MENU.heading}</h3>
-            <div className="dg-boxed-logo-grid">
-              {INDUSTRIES_MENU.logos.map((logo, lIdx) => {
-                const brandKey = logo.name.toLowerCase().replace(/[^a-z0-9]/g, '');
-                return (
-                  <div key={lIdx} className="dg-logo-cell">
-                    <span className={`dg-cell-brand-text brand-${brandKey}`}>{logo.name}</span>
-                  </div>
-                );
-              })}
             </div>
           </div>
         </div>
